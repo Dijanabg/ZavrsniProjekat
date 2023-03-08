@@ -23,7 +23,7 @@ return new class extends Migration
             $table->tinyInteger('status')->defoult('0');
             $table->tinyInteger('trending')->defoult('0');
             $table->foreignId('category_id');
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 
