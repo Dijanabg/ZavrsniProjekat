@@ -15,6 +15,7 @@ class Product extends Model
         'short_desc',
         'decription',
         'slug',
+        'image',
         'sell_price',
         'orig_price',
         'qty',
@@ -22,7 +23,10 @@ class Product extends Model
         'trending',
         'category_id'
     ];
-    public function category(){
+    public function categoryId(){
         return $this->BelongsTo(Category::class,'category_id');
+    }
+    public function category(){
+        return $this->hasOne(Category::class);
     }
 }
