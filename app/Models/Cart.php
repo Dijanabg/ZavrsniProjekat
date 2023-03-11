@@ -14,4 +14,10 @@ class Cart extends Model
         'product_id',
         'prod_qty'
     ];
+    public function cartitems(){
+        return $this->hasMany(Product::class);
+    }
+    public function cartuser(){
+        return $this->hasOne(User::class);
+    }
 }

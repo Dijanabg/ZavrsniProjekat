@@ -16,6 +16,9 @@ return new class extends Migration
             $table->foreignId('product_id');
             $table->foreignId('user_id');
             $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -27,3 +30,4 @@ return new class extends Migration
         Schema::dropIfExists('wishlist');
     }
 };
+

@@ -26,7 +26,10 @@ return new class extends Migration
             $table->tinyInteger('status')->defoult('0');
             $table->text('comment')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
+        
     }
 
     /**

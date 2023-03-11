@@ -15,4 +15,11 @@ class OrderItem extends Model
         'qty',
         'price',
     ];
+
+    public function orderitems(){
+        return $this->hasMany(Product::class);
+    }
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
 }

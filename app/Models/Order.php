@@ -23,4 +23,7 @@ class Order extends Model
         'status',
         'comment' 
     ];
+    public function users(){
+        return $this->hasOne(User::class);
+    }
 }

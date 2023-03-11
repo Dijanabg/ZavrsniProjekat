@@ -19,6 +19,9 @@ return new class extends Migration
             /// nisam sigurna za price
             $table->integer('price');
             $table->timestamps();
+
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
