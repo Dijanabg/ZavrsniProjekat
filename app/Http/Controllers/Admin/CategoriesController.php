@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,7 +18,7 @@ class CategoriesController extends Controller
         //kad je vise podataka radi se paginate
         $category = Category::paginate(10);
         //return $category; ispisuje u json formatu na stranici 
-        return view('admin/categories.index',['category'=> $category]);
+        return view('categories.index',['category'=> $category]);
     }
 
     /**
@@ -25,8 +26,8 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        $category = Category::all();
-        return view('admin/categories.add',['category'=>$category]);
+       
+        return view('categories.create');
     }
 
     /**
@@ -40,31 +41,31 @@ class CategoriesController extends Controller
             'image'=>$request->image,
             'status'=>$request->status
        ]);
-       return redirect('admin/categories/'. $new_cat->id);
+       return redirect('categories/'. $new_cat->id);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show( $id)
     {
         $cat = Category::find($id);
-        return view('/admin/categories.show',['category'=>$cat]);
+        return view('categories.show',['categories'=>$cat]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
         $cat = Category::find($id);
-        return view('/admin/categories.edit',['category'=>$cat]);
+        return view('categories.edit',['categories'=>$cat]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,  $id)
     {
         $cat = Category::find($id);
         $cat->update([
@@ -73,16 +74,16 @@ class CategoriesController extends Controller
             'image'=>$request->image,
             'status'=>$request->status
         ]);
-        return redirect('/admin/categories/'. $cat->id);
+        return redirect('categories/'. $cat->id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $cat = Category::find($id);
         $cat->delete();
-        return redirect('/admin/categories');
+        return redirect('categories');
     }
 }
