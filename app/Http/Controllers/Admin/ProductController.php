@@ -10,81 +10,72 @@ use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $product = Product::all();
-        return view('admin.product.index', ['products'=> $product]);
+        $product = Product::paginate(10);
+        return view('product.index', ['products'=> $product]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
-    {
-        $category = Category::all();
-        return view('admin.product.add.create')->with(['categories'=>$category]);
+    {   $cat = Category::all();
+        return view('product.create', ['categories'=>$cat]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
-    {
+    {   
+  
+        if ($image = $request->file('image')) {
+            $destinationPath = 'image/';
+            $prodImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $prodImage);
+            $input['image'] = "$prodImage";
+        }  
+      
         $prod = Product::create([
+       
             'name'=>$request->name,
             'short_desc'=>$request->short_desc,
-            'decription'=>$request->decription,
+            'description'=>$request->description,
             'slug'=>$request->slug,
-            'image'=>$request->image,
+            'image'=>$request->prodImage,
             'sell_price'=>$request->sell_price,
             'orig_price'=>$request->orig_price,
             'qty'=>$request->qty,
-            'status'=>$request->status,
-            'trending'=>$request->trending,
-            'category_id'=>$request->category_id
+            'status'=>$request->status == true ? '1':'0',
+            'trending'=>$request->trending == true ? '1':'0',
+            'category_id'=>$request->category
         ]);
+        return redirect('product');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(int $id)
+    public function show($id)
     {
         $product = Product::findOrFail($id);
-        return view('admin/product.show', ['products'=>$product]);
+        return view('product.show', ['products'=>$product]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Request $request, int $id)
+    public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('admin.product.edit')->with(['products'=>$product]);
+        return view('product.edit',['products'=>$product]);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, int $id)
+    public function update(Request $request, $id)
     {
-        $prod = Product::findOrFail($id);
+        $prod = Product::find($id);
         $prod->update([
             'name'=>$request->name,
             'short_desc'=>$request->short_desc,
-            'decription'=>$request->decription,
+            'description'=>$request->description,
             'slug'=>$request->slug,
             'image'=>$request->image,
             'sell_price'=>$request->sell_price,
             'orig_price'=>$request->orig_price,
             'qty'=>$request->qty,
-            'status'=>$request->status,
-            'trending'=>$request->trending,
-            'category_id'=>$request->category_id
+            'status'=>$request->status == true ? '1':'0',
+            'trending'=>$request->trending == true ? '1':'0',
+            'category_id'=>$request->category
         ]);
+        return redirect('product');
     }
 
     /**
@@ -94,6 +85,6 @@ class ProductController extends Controller
     {
         $prod = Product::findOrFail($id);
         $prod ->delete();
-        return redirect('admin.product');
+        return redirect('product');
     }
 }

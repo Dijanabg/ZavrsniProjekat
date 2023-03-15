@@ -17,12 +17,12 @@
                                     <div class="col-md-6">
                                         <input type="hidden" name="id" value="{{ $categories->id }}">
                                         <label for="">Ime</label>
-                                        <input type="text" name="ime" value="{{ $categories->name }}" placeholder="Unesi ime kategorije" class="form-control">
+                                        <input type="text" name="name" value="{{ $categories->name }}" placeholder="Unesi ime kategorije" class="form-control">
                                     </div>
                                     
                                     <div class="col-md-12">
                                         <label for="">Opis</label>
-                                        <input type="text" name="opis" value="{{ $categories->slug }}" placeholder="Unesi slug" class="form-control">
+                                        <input type="text" name="slug" value="{{ $categories->slug }}" placeholder="Unesi slug" class="form-control">
                                     </div>
                                     <div class="col-md-12">
                                         <label for="">Upload image</label>
@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <label for="">Opis</label>
-                                        <input type="text" name="opis" value="{{ $categories->status }}" placeholder="Unesi slug" class="form-control">
+                                        <input type="text" name="status" value="{{ $categories->status }}" placeholder="Unesi slug" class="form-control">
                                     </div>
                                     <div class="col-md-12">
                                         <button type="submit" class="btn bg-gradient-primary" >Ažuriraj</button>
@@ -44,4 +44,4 @@
                     </div>
         </div>
     </div>
-</div>
+</div> 

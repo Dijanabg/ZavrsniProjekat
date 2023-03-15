@@ -27,7 +27,7 @@
                                         <td>{{ ucfirst($item->status) }}</td>
                                        
                                         
-                                        <td><a href="{{ url('/categories/'. $item->id).'/edit' }}" class="btn bg-gradient-primary">Ažuriraj</a>
+                                        <td><a href="{{ url('/categories/'. $item->id.'/edit') }}" class="btn bg-gradient-primary">Ažuriraj</a>
                                             <form action="{{ url('/categories'.'/'. $item->id) }}" method="POST">
                                             @csrf
                                 @method('DELETE')
