@@ -24,12 +24,12 @@ class ProductController extends Controller
     public function store(Request $request)
     {   
   
-        if ($image = $request->file('image')) {
-            $destinationPath = 'image/';
-            $prodImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $prodImage);
-            $input['image'] = "$prodImage";
-        }  
+        // if ($image = $request->file('image')) {
+        //     $destinationPath = 'image/';
+        //     $prodImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+        //     $image->move($destinationPath, $prodImage);
+        //     $input['image'] = "$prodImage";
+        // }  
       
         $prod = Product::create([
        

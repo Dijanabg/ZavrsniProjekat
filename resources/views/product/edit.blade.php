@@ -6,20 +6,19 @@
            <div class="card">
                 <div class="card-header bg-gradient-primary">
                      <h4>Ažuriraj proizvod
-                        <a href="{{ url('products') }}" class="btn bg-gradient-primary float-end">Nazad</a>
+                        <a href="{{ url('product') }}" class="btn bg-gradient-primary float-end">Nazad</a>
                      </h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ url('product/'.$products->id.'/edit') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('product'.'/'.$products->id.'/edit') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                         @method('PUT')   
                         <div class="row">
                                     <div class="col-md-12  mb-2">
-                                        <label for="">Izaberi kategoriju</label>
+                                        <label for="">Kategorija</label>
 
                                         <select name="category" class="form-select">
-                                    <option selected>Kategorija</option>
-                                            <option value="">{{ $products->categoryId->name }}</option>
+                                            <option selected value="{{ $products->category_id }}">{{ $products->categoryId->name }}</option>
                                         </select>
                                     </div>
                                     <input type="hidden" name="id" value="{{ $products->id }}">
@@ -42,9 +41,9 @@
                                     </div>
                                     <div class="col-md-12">
                                         <label for="">Upload image</label>
-                                        <input type="file" name="image" class="form-control">
+                                        <input type="file" name="image" class="form-control" required>
                                         <label for="">Trenutna slika</label>
-                                        <input type="hidden" name="old_image" value="{{ $categories->image }}">
+                                        <input type="hidden" name="old_image" value="{{ $products->image }}">
                                         <img src="../uploads/{{ $products->image }}>" height="50px" width="50px" alt="">
                                     </div>
                                     <div class="col-md-6">

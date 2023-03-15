@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/categories/create', [CategoriesController::class, 'store'])->name('categories.store'); //cuva novu kategoriju u bazu
     Route::get('/categories/{id}', [CategoriesController::class, 'show'])->name('categories.show'); //prikaz jedne kategorije
     Route::get('/categories/{id}/edit', [CategoriesController::class, 'edit'])->name('categories.edit'); //forma za izmenu podataka odredjene kategorije
-    Route::put('/categories/{id}/edit}', [CategoriesController::class, 'update'])->name('categories.update'); //menja podatke u bazi
+    Route::put('/categories/{id}/edit', [CategoriesController::class, 'update'])->name('categories.update'); //menja podatke u bazi
     Route::delete('/categories/{id}', [CategoriesController::class, 'destroy'])->name('categories.destroy'); //brise kategoriju iz baze
 
     Route::get('/product',[ProductController::class, 'index'])->name('product.index'); //prikaz svih kategorija
@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/product/create',[ProductController::class, 'store'])->name('product.store'); //cuva novu kategoriju u bazu
     Route::get('/product/{id}',[ProductController::class, 'show'])->name('product.show'); //prikaz jedne kategorije
     Route::get('/product/{id}/edit',[ProductController::class, 'edit'])->name('product.edit'); //forma za izmenu podataka odredjene kategorije
-    Route::put('/product/{id}/edit}',[ProductController::class, 'update'])->name('product.update'); //menja podatke u bazi
+    Route::put('/product/{id}/edit',[ProductController::class, 'update'])->name('product.update'); //menja podatke u bazi
     Route::delete('/product/{id}',[ProductController::class, 'destroy'])->name('product.destroy'); //brise kategoriju iz baze
 
 
