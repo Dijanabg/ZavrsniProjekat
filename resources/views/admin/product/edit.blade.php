@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.inc.admin')
 @section('content')
 <div class="container">
     <div class="row">
@@ -6,11 +6,11 @@
            <div class="card">
                 <div class="card-header bg-gradient-primary">
                      <h4>Ažuriraj proizvod
-                        <a href="{{ url('product') }}" class="btn bg-gradient-primary float-end">Nazad</a>
+                        <a href="{{ url('/admin/product') }}" class="btn bg-gradient-primary float-end">Nazad</a>
                      </h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ url('product'.'/'.$products->id.'/edit') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('/admin/product'.'/'.$products->id.'/edit') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                         @method('PUT')   
                         <div class="row">
@@ -63,11 +63,11 @@
                                         </div>
                                         <div class="col-md-3  mb-2">
                                             <label class="mb-0" for="">Status</label><br>
-                                            <input type="checkbox" value="{{ $products->status }}" name="status" >
+                                            <input type="checkbox"  {{ $products->status == "1" ? 'checked': ' '}} name="status" >
                                         </div>
                                         <div class="col-md-3 mb-2">
                                             <label class="mb-0" for="">Trending</label><br>
-                                            <input type="checkbox" value="{{ $products->trending }}" name="trending">
+                                            <input type="checkbox"  {{ $products->trending == "1" ? 'checked': ' '}} name="trending">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -80,3 +80,4 @@
         </div>
     </div>
 </div>
+@endsection

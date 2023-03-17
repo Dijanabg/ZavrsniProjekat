@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.inc.admin')
 @section('content')
 <div class="container"> 
     <div class="row">
@@ -27,8 +27,8 @@
                                         <td>{{ ucfirst($item->status) }}</td>
                                        
                                         
-                                        <td><a href="{{ url('/categories/'. $item->id.'/edit') }}" class="btn bg-gradient-primary">Ažuriraj</a>
-                                            <form action="{{ url('/categories'.'/'. $item->id) }}" method="POST">
+                                        <td><a href="{{ url('/admin/categories/'. $item->id.'/edit') }}" class="btn bg-gradient-primary">Ažuriraj</a>
+                                            <form action="{{ url('/admin/categories'.'/'. $item->id) }}" method="POST">
                                             @csrf
                                 @method('DELETE')
                                                 <button type="submit" class="btn bg-gradient-primary" name="">Obriši</button>

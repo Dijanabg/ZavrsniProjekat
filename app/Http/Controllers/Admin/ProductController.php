@@ -13,12 +13,12 @@ class ProductController extends Controller
     public function index()
     {
         $product = Product::paginate(10);
-        return view('product.index', ['products'=> $product]);
+        return view('admin.product.index', ['products'=> $product]);
     }
 
     public function create()
     {   $cat = Category::all();
-        return view('product.create', ['categories'=>$cat]);
+        return view('admin.product.create', ['categories'=>$cat]);
     }
 
     public function store(Request $request)
@@ -51,13 +51,13 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        return view('product.show', ['products'=>$product]);
+        return view('frontend.show', ['products'=>$product]);
     }
 
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('product.edit',['products'=>$product]);
+        return view('admin.product.edit',['products'=>$product]);
     }
     public function update(Request $request, $id)
     {

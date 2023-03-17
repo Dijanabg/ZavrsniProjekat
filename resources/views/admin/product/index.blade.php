@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.inc.admin')
 @section('content')
 <div class="container">
     <div class="row">
@@ -29,10 +29,10 @@
                                         <td class="text-sm">{{ ucfirst($item->status) }}</td>
                                         <td class="text-sm">{{ ucfirst($item->trending) }}</td>
                                         <td>
-                                            <a href="{{ url('/product/'. $item->id.'/edit') }}" class="btn btn-sm bg-gradient-primary">Ažuriraj</a>
+                                            <a href="{{ url('/admin/product/'. $item->id.'/edit') }}" class="btn btn-sm bg-gradient-primary">Ažuriraj</a>
                                         </td>
                                         <td>
-                                        <form action="{{ url('/product'.'/'. $item->id) }}" method="post">
+                                        <form action="{{ url('/admin/product'.'/'. $item->id) }}" method="post">
                                         @csrf
                                 @method('DELETE')
                                                 <button type="submit" class="btn bg-gradient-primary" name="">Obriši</button>

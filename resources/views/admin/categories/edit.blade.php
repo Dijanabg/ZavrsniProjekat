@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.inc.admin')
 @section('content')
 <div class="container">
     <div class="row">
@@ -6,11 +6,11 @@
                     <div class="card">
                         <div class="card-header bg-gradient-primary">
                             <h4>Ažuriraj kategoriju
-                                <a href="{{ url('categories') }}" class="btn bg-gradient-primary float-end">Nazad</a>
+                                <a href="{{ url('admin/categories') }}" class="btn bg-gradient-primary float-end">Nazad</a>
                             </h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ url('categories/'.$categories->id.'/edit') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ url('admin/categories/'.$categories->id.'/edit') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                         @method('PUT')
                                 <div class="row">
@@ -32,9 +32,9 @@
                                         <img src="../uploads/{{ $categories->image }}>" height="50px" width="50px" alt="">
                                     </div>
                                     <div class="col-md-12">
-                                        <label for="">Opis</label>
-                                        <input type="text" name="status" value="{{ $categories->status }}" placeholder="Unesi slug" class="form-control">
-                                    </div>
+                                <label for="">Status</label>
+                                <input type="checkbox" name="status" {{ $categories->status == "1" ? 'checked': ' '}}>
+                            </div>
                                     <div class="col-md-12">
                                         <button type="submit" class="btn bg-gradient-primary" >Ažuriraj</button>
                                     </div>
@@ -45,3 +45,4 @@
         </div>
     </div>
 </div> 
+@endsection

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.inc.admin')
 @section('content')
 <div class="container">
     <div class="row">
@@ -8,7 +8,7 @@
                     <h4>Unos nove kategorije</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ url('categories/create') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('admin/categories/create') }}" method="POST" enctype="multipart/form-data">
                        @csrf
                         <div class="row">
                             <div class="col-md-12">
@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="">Status</label>
-                                <input type="text" name="status" placeholder="Unesite status kategorije" class="form-control">
+                                <input type="checkbox" name="status" >
                             </div>
                             <div class="col-md-12">
                                 <button type="submit" class="btn bg-gradient-primary" id="btn-submit">Save</button>

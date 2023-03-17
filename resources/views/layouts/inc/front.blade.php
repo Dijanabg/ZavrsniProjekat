@@ -19,30 +19,19 @@
         <link id="pagestyle" href="{{ asset('css/material-dashboard.min.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset ('css/owl.carousel.min.css') }}" >
         <link rel="stylesheet" href="{{ asset ('css/owl.theme.default.min.css') }}">
+        <link rel="stylesheet" href="{{ asset ('css/style.css') }}" >
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
+        @include('layouts.inc.frontnavigation')
+            <div>
                 @yield('content')
-            </main>
-        </div>
-
+            </div>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-<script src="{{ asset('js/owl.carousel.min.js') }}" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+        <script src="{{ asset('js/owl.carousel.min.js') }}" defer></script>
+        @yield('scripts')
     </body>
 </html> 

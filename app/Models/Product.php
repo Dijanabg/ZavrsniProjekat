@@ -22,10 +22,10 @@ class Product extends Model
         'status',
         'trending',
         'category_id'
-    ];
-    public function categoryId(){
+    ]; 
+   public function categoryId(){
         return $this->BelongsTo(Category::class,'category_id');
-    }
+    } 
     public function category(){
         return $this->hasOne(Category::class);
     }

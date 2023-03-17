@@ -13,12 +13,12 @@ class CategoriesController extends Controller
     {
         $category = Category::paginate(10);
         //return $category; ispisuje u json formatu na stranici 
-        return view('categories.index',['category'=> $category]);
-    }
+        return view('admin.categories.index',['category'=> $category]);
+    } 
     public function create()
     {
        
-        return view('categories.create');
+        return view('admin.categories.create');
     }
     public function store(Request $request)
     {
@@ -28,7 +28,7 @@ class CategoriesController extends Controller
             'image'=>$request->image,
             'status'=>$request->status
        ]);
-       return redirect('categories/'. $new_cat->id);
+       return redirect('categories');
     }
     public function show( $id)
     {
@@ -38,7 +38,7 @@ class CategoriesController extends Controller
     public function edit( $id)
     {
         $cat = Category::find($id);
-        return view('categories.edit',['categories'=>$cat]);
+        return view('admin.categories.edit',['categories'=>$cat]);
     }
     public function update(Request $request,  $id)
     {
@@ -49,7 +49,7 @@ class CategoriesController extends Controller
             'image'=>$request->image,
             'status'=>$request->status == true ? '1':'0',
         ]);
-        return redirect('categories');
+        return redirect('categories.index');
     }
     public function destroy($id)
     {
