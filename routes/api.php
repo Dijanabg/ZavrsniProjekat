@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\CategoryApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::get('/users',[UsersController::class, 'index']);
+Route::get('/users/{id}', [UsersController::class, 'show']);
+ //Route::resource('users', UsersControllers::class);
+//Registracija usera
+ Route::post('/register', [AuthController::class, 'register']);
+//Login
+Route::post('/login', [AuthController::class, 'login']);
+
+//  Route::get('/categories',[CategoryApiController::class, 'index']);
+// Route::get('/categories/{id}', [CategoryApiController::class, 'show']);
+Route::resource('categories', CategoryApiController::class)->only(['index', 'show']);
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    
+    
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+    //Route::middleware(['auth', 'isAdmin'])->group(function () {
+        Route::resource('categories', CategoryApiControlle::class)->only(['update', 'store', 'destroy']);
+    //});
 });
