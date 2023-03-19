@@ -6,7 +6,7 @@
                 <h6 class="text-white fs-4">
                     <a class="text-white text-decoration-none " href="{{ url('/')}}">Home /</a>
                     <a class="text-white text-decoration-none " href="{{ url('/categories')}}">Kategorije /</a>
-                    <?= $category['ime']; ?>
+                    
                 </h6>
             </div>
         </div>

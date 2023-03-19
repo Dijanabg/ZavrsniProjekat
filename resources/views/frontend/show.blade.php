@@ -34,16 +34,23 @@
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <button class="btn btn-primary px-4 addToCartBtn" value="{{ ucfirst($products->id) }}">
-                                        <i class="fa fa-shoping-cart me-2"></i>
+                                    <form action="" method="">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ ucfirst($products->id) }}">
+                                        <button class="btn btn-primary px-4 addToCartBtn">    
+                                        <i class="fa fa-shoping-cart me-2"></i> 
                                         Ubaci u korpu
-                                    </button>
+                                        </button>
+                                    </form>
                                 </div>
                                 <div class="col-md-6">
-                                    <button class="btn btn-primary px-4 addToWishList" value="{{ ucfirst($products->id) }} ">
-                                        <i class="fa fa-heart me-2"></i>
-                                        Lista želja
-                                    </button>
+                                    <form action="" method="">
+                                        <input type="hidden" name="product_id" value="{{ ucfirst($products->id) }}">
+                                        <button class="btn btn-primary px-4 addToWishList">
+                                            <i class="fa fa-heart me-2"></i>
+                                            Lista želja
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                             
@@ -59,4 +66,4 @@
                             <p class="prod fs-5">{{ ucfirst($products->description) }}</p>
         </div>
         </div>
-        @endsection
+@endsection

@@ -31,14 +31,16 @@ Route::get('/categories', [FrontendController::class, 'category'])->name('catego
 Route::post('/categories/{id}', [FrontendController::class, 'category'])->name('categories');
 Route::get('/productsbycat/{id}',[FrontendController::class, 'catProducts'])->name('frontend.catprods'); 
 Route::post('/productsbycat/{id}',[FrontendController::class, 'catProducts'])->name('frontend.catprod'); 
-Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show'); //prikaz jedne kategorij
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 
 Route::middleware('auth')->group(function () {
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+    Route::get('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/users/cart', [CartController::class, 'store'])->name('product.store');
+
     Route::middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/dashboard', function(){ return view('admin.index'); });
         Route::get('/admin/categories', [CategoriesController::class, 'index'])->name('categories.index'); //prikaz svih kategorija
