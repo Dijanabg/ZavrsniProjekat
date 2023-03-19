@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\Api\ProductApiController;
 use App\Http\Controllers\API\CategoryApiController;
 
 /*
@@ -31,12 +33,15 @@ Route::post('/login', [AuthController::class, 'login']);
 //  Route::get('/categories',[CategoryApiController::class, 'index']);
 // Route::get('/categories/{id}', [CategoryApiController::class, 'show']);
 Route::resource('categories', CategoryApiController::class)->only(['index', 'show']);
+Route::resource('products', ProductApiController::class)->only(['index', 'show']);
+//***********************Route::resource('cart', CartController::class)->only(['index', 'show']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     
     
     Route::post('/logout', [AuthController::class, 'logout']);
 
     //Route::middleware(['auth', 'isAdmin'])->group(function () {
-        Route::resource('categories', CategoryApiControlle::class)->only(['update', 'store', 'destroy']);
+        Route::resource('products', CategoryApiController::class)->only(['update', 'store', 'destroy']);
+        Route::resource('products', ProductApiController::class)->only(['update', 'store', 'destroy']);
     //});
 });

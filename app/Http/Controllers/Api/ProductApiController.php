@@ -1,19 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\CategoryResource;
+use App\Http\Resources\ProductResource;
 
-class CategoryApiController extends Controller
+class ProductApiController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $cat = DB::table('categories')->get();
-        return $cat;
+        $product = DB::table('products')->get();
+        return $product;
     }
 
     /**
@@ -35,21 +38,15 @@ class CategoryApiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(Product $product)
     {
-        // $category = Category::find($catid);
-
-        // if (is_null($category))
-        //     return response()->json("category ne postoji", 404);
-
-        // return response()->json($category);
-        return new CategoryResource($category);
+        return new ProductResource($product);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($catid)
+    public function edit(Product $product)
     {
         //
     }
@@ -57,7 +54,7 @@ class CategoryApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $catid)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -65,7 +62,7 @@ class CategoryApiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $catid)
+    public function destroy(Product $product)
     {
         //
     }
