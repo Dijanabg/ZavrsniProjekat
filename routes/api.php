@@ -32,7 +32,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 //  Route::get('/categories',[CategoryApiController::class, 'index']);
 // Route::get('/categories/{id}', [CategoryApiController::class, 'show']);
-Route::resource('categories', CategoryApiController::class)->only(['index', 'show']);
+Route::resource('category', CategoryApiController::class)->only(['index', 'show']);
 Route::resource('products', ProductApiController::class)->only(['index', 'show']);
 //***********************Route::resource('cart', CartController::class)->only(['index', 'show']);
 Route::group(['middleware' => ['auth:sanctum']], function () {

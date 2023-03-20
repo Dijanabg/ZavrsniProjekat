@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
+use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoriesController;
  use App\Http\Controllers\Frontend\FrontendController;
@@ -28,18 +29,20 @@ use App\Http\Controllers\Admin\CategoriesController;
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/categories', [FrontendController::class, 'category'])->name('categories');
-Route::post('/categories/{id}', [FrontendController::class, 'category'])->name('categories');
+Route::post('/categories/{id}', [FrontendController::class, 'category'])->name('categories.one');
 Route::get('/productsbycat/{id}',[FrontendController::class, 'catProducts'])->name('frontend.catprods'); 
 Route::post('/productsbycat/{id}',[FrontendController::class, 'catProducts'])->name('frontend.catprod'); 
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
+Route::post('/product/{id}', [ProductController::class, 'addToCart'])->name('product.tocart');
 
 Route::middleware('auth')->group(function () {
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::post('/users/cart', [CartController::class, 'store'])->name('product.store');
+
+    Route::get('/cart', [CartController::class, 'index'])->name('users.cart.index');
+    Route::delete('/cart', [CartController::class, 'destroy'])->name('users.cart.delete');
 
     Route::middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/dashboard', function(){ return view('admin.index'); });

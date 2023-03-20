@@ -34,10 +34,10 @@
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <form action="" method="">
+                                    <form action="{{ url('/product/'.$products->id) }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ ucfirst($products->id) }}">
-                                        <button class="btn btn-primary px-4 addToCartBtn">    
+                                        <button class="btn btn-primary px-4">    
                                         <i class="fa fa-shoping-cart me-2"></i> 
                                         Ubaci u korpu
                                         </button>

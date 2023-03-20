@@ -15,9 +15,6 @@
         <li class="nav-item">
           <a class="nav-link text-white" href="">Kontakt</a>
         </li>
-        <li>
-          <a class="nav-link fs-3" href="">Korpa</a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="">Moje porudžbine</a>
         </li>
@@ -25,7 +22,7 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
               
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu text-white">
             <li><a class="dropdown-item fs-3" href="">Izloguj se</a></li>
             <li><a class="dropdown-item fs-3" href="">Lista želja</a></li>
           </ul>
@@ -33,7 +30,7 @@
         @if (Route::has('login'))
         <li class="nav-item" >
           @auth
-          <a href="{{ url('/home') }}" class="nav-link text-white">Korpa</a>
+          <a href="{{url('/cart') }}" class="nav-link text-white">Korpa</a>
         </li>
         @else
         <li class="nav-item">

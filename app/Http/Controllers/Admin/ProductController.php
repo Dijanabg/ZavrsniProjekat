@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -77,10 +79,23 @@ class ProductController extends Controller
         ]);
         return redirect('product');
     }
+    public function addToCart(Request $request, $id)
+    { 
+        $product_id = $request->input('product_id');
+        if (Auth::check()) {
+                if (Cart::where('product_id', $product_id)->where('user_id', Auth::id())->exists()) {
+                    //return response()->json(['status' => $prod_check->name . ' Already Added to Cart']);
+                    return redirect()->back();
+                } else {
+                    $cart = new Cart();
+                    $cart->product_id = $product_id;
+                    $cart->user_id = Auth::id();
+                    $cart->save();
+                    return redirect('cart');
+                }
+        } else return redirect('/login');
+    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(int $id)
     {
         $prod = Product::findOrFail($id);
@@ -88,3 +103,20 @@ class ProductController extends Controller
         return redirect('product');
     }
 }
+// $product_id = $request->input('product_id');
+//         $product_qty = $request->input('product_qty');
+//         if (Auth::check()) {
+//             $prod_check = Product::where('id', $product_id)->first();
+//             if ($prod_check) {
+//                 if (Cart::where('prod_id', $product_id)->where('user_id', Auth::id()->exists())) {
+//                     return response()->json(['status' => $prod_check->name . ' Already Added to Cart']);
+//                 } else {
+//                     $cartitem = new Cart();
+//                     $cartitem->prod_id = $product_id;
+//                     $cartitem->user_id = Auth::id();
+//                     $cartitem->prod_qty = $product_qty;
+//                     $cartitem->save();
+//                     return response()->json(['status' => $prod_check->name . ' Added to Cart']);
+//                 }
+//             }
+//         } else return response()->json(['status' => 'Login to Continue']);

@@ -20,7 +20,7 @@ class AdminMiddleware
             if(Auth::user()->role_as == '1'){
                 return $next($request);
             }else{
-                return redirect('/wellcome')->with('message', 'Acces denited');
+                return redirect('/')->with('message', 'Acces denited');
             }
         }else{
             return redirect('/login')->with('message', 'Login to access');
