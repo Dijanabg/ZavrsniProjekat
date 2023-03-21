@@ -24,6 +24,9 @@
                         <p>{{ ucfirst($products->short_desc) }}</p>
 
                         <hr>
+                        @if($products->qty < 1 )
+                        <label>Nema na lageru</label>
+                        @endIf
                         <div class="row">
                             
                             <div class="col-md-4">
@@ -37,10 +40,12 @@
                                     <form action="{{ url('/product/'.$products->id) }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ ucfirst($products->id) }}">
+                                        @if($products->qty >0 )
                                         <button class="btn btn-primary px-4">    
                                         <i class="fa fa-shoping-cart me-2"></i> 
                                         Ubaci u korpu
                                         </button>
+                                        @endif
                                     </form>
                                 </div>
                                 <div class="col-md-6">

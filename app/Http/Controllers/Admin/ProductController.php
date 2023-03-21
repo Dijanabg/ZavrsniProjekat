@@ -79,7 +79,7 @@ class ProductController extends Controller
         ]);
         return redirect('product');
     }
-    public function addToCart(Request $request, $id)
+    public function addToCart(Request $request)
     { 
         $product_id = $request->input('product_id');
         if (Auth::check()) {

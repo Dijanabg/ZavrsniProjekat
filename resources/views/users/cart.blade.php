@@ -27,6 +27,7 @@
                                 </div>
                             </div>
                             <div id="">
+                                @php $totalPrice = 0 @endphp
                                 @foreach ($carts as $citem)
                                     <div class="card product_data shadow-sm mb-3">
                                         <div class="row align-items-center">
@@ -52,11 +53,13 @@
                                         </div>
                                     </div>
                             </div>
+                            @php $totalPrice += $citem -> products ->sell_price @endphp
+                            @endforeach
                             <div class="text-center">
-                                <h5><span class=" fw-bold fs-3"> Ukupna cena: </span></h5>
+                                <h5><span class=" fw-bold fs-3"> Ukupna cena: {{ $totalPrice}}</span></h5>
                             </div>
                             <div class=" float-end">
-                                <a href="" class="btn btn-outline-primary">Poruči</a>
+                                <a href="{{ url('/check') }}" class="btn btn-outline-primary">Poruči</a>
                             </div>
                            
                       
@@ -64,7 +67,7 @@
                             <div class="card card-body text-center shadow">
                                 <h4 class="py-3">Vaša korpa je prazna</h4>
                             </div>
-                      @endforeach
+                      
                     </div>
                 </div>
             </div>
