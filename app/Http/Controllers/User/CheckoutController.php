@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,22 +37,25 @@ class CheckoutController extends Controller
         $order->tracking_no = 'dijana'.rand(1111, 9999);
         $order->save();
 
-        $cart = Cart::where('user_id',Auth::id())->get()->first();
-        $product_id = $request->input('product_id');
-        foreach($cart as $citem){
-            OrderItem::create([
-                'order_id'=>$request->orderId,
-                'product_id'=>$request->$citem->products->product_id,
-                'price'=>$request->$citem->products->sell_price
-            ]);
-        }
+        OrderItem::create([
+            'order_id' => DB::getPdo()->lastInsertId(),
+            //'order_id'=>$request->OrderItem->orderId(),
+            'product_id'=>$request->input('product_id'),
+            'price'=>$request->input('sell_price')
+        ]);
+
+        // $cart = Cart::where('user_id',Auth::id())->get()->first();
+        // $product_id = $request->input('product_id');
+        // foreach($cart as $citem){
+        //     OrderItem::create([
+        //         'order_id' => DB::getPdo()->lastInsertId(),
+        //         //'order_id'=>$request->orderId,
+        //         'product_id'=>$request->$citem->products->product_id,
+        //         'price'=>$request->$citem->products->sell_price
+        //     ]);
+        // }
         $cart = Cart::where('user_id',Auth::id())->get();
         Cart::destroy($cart);
         return redirect('/')->with('status', 'Porudžina je prihvaćena');
     }
 }
-// OrderItem::create([
-//     'order_id'=>$request->OrderItem->orderId(),
-//     'product_id'=>$request->input('product_id'),
-//     'price'=>$request->input('sell_price')
-// ]);

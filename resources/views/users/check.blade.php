@@ -61,7 +61,7 @@
                                         <div class="col-md-5">
                                             <label>{{ ucfirst($citem->products->name) }}</label>
                                         </div>
-                                        <input type="hidden" name="product_id" value="{{ $citem->products->sell_price}}">
+                                <input type="hidden" name="sell_price" value="{{ $citem->products->sell_price }}">
                                         <div class="col-md-3">
                                             <label>{{ ucfirst($citem->products->sell_price) }}</label>
                                         </div>
