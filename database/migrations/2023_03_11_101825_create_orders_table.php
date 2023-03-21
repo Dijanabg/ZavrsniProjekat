@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->integer('pincode');
+            $table->string('adress');
             $table->integer('total_price');
             $table->string('pay_mode');
             $table->string('pay_id')->nullable();

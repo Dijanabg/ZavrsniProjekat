@@ -17,13 +17,17 @@ class Order extends Model
         'email',
         'phone',
         'pincode',
+        'adress',
         'total_price',
         'pay_mode',
         'pay_id',
         'status',
         'comment' 
     ];
-    public function users(){
-        return $this->hasOne(User::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
+    public function userId(){
+        return $this->BelongsTo(User::class,'user_id');
+    } 
 }

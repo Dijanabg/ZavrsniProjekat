@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\Admin\CategoriesController;
  use App\Http\Controllers\Frontend\FrontendController;
 
@@ -43,6 +44,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/cart', [CartController::class, 'index'])->name('users.cart.index');
     Route::delete('/cart', [CartController::class, 'destroy'])->name('users.cart.delete');
+
+    Route::get('/check', [CheckoutController::class, 'index']);
+    Route::post('/check', [CheckoutController::class, 'placeorder']);
 
     Route::middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/dashboard', function(){ return view('admin.index'); });
