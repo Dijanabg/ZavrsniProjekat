@@ -6,7 +6,9 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\CategoryResource;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryApiController extends Controller
 {
@@ -29,7 +31,31 @@ class CategoryApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|max:255',
+            'body' => 'required|string|max:100',
+            'slug' => 'required|string',
+            'excerpt' => 'required',
+            'category_id' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors());
+        }
+
+        $cat = Category::create([
+            'title' => $request->title,
+            'body' => $request->body,
+            'slug' => $request->slug,
+            'excerpt' => $request->excerpt,
+            'category_id' => $request->category_id,
+            'user_id' => Auth::user()->id
+        ]);
+
+        return response()->json([
+            'Post je uspesno sacuvan',
+            new CategoryResource($cat)
+        ]);
     }
 
     /**

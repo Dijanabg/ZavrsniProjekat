@@ -39,13 +39,18 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        // $user = User::find($userid);
+        $user = User::find($user);
 
         // if (is_null($user))
         //     return response()->json("User ne postoji", 404);
 
         // return response()->json($user);
         return new UserResource($user);
+        if (is_null($user)){
+            return response()->json("User ne postoji", 404);
+        }else{
+
+        return response()->json($user);}
     }
 
     /**
