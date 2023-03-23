@@ -18,19 +18,27 @@
         <li class="nav-item">
           <a class="nav-link" href="">Moje porudžbine</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-              
-          </a>
-          <ul class="dropdown-menu text-white">
-            <li><a class="dropdown-item fs-3" href="">Izloguj se</a></li>
-            <li><a class="dropdown-item fs-3" href="">Lista želja</a></li>
-          </ul>
-        </li>
+        
         @if (Route::has('login'))
         <li class="nav-item" >
           @auth
           <a href="{{url('/cart') }}" class="nav-link text-white">Korpa</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+              {{ Auth::user()->name }}
+          </a>
+          <ul class="dropdown-menu">
+            <li class="nav-item text-dark">
+              <form method="POST" action="{{ route('logout') }}">
+              @csrf
+                <a href="route('logout')" class="btn bg-primary w-100" type="button" onclick="event.preventDefault(); this.closest('form').submit();">
+                   {{ __('Log Out') }}
+                </a>
+              </form>
+            </li>
+            <li><a class="dropdown-item fs-3" href="">Lista želja</a></li>
+          </ul>
         </li>
         @else
         <li class="nav-item">

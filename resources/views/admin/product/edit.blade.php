@@ -1,7 +1,7 @@
 @extends('layouts.inc.admin')
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row"> 
         <div class="col-md-12">
            <div class="card">
                 <div class="card-header bg-gradient-primary">
@@ -40,11 +40,15 @@
                                         <input type="text" required name="slug" value="{{ $products->slug }}" placeholder="Unesi opis" class="form-control mb-2 ">
                                     </div>
                                     <div class="col-md-12">
-                                        <label for="">Upload image</label>
-                                        <input type="file" name="image" class="form-control" required>
-                                        <label for="">Trenutna slika</label>
-                                        <input type="hidden" name="old_image" value="{{ $products->image }}">
-                                        <img src="../uploads/{{ $products->image }}>" height="50px" width="50px" alt="">
+                                    <div class="col-md-12">
+                                    @if($products->image)
+                                        <img src="{{ asset('storage/product/'.$products->image) }}" height="50px" width="50px" alt="">
+                                    @endif
+                                    </div>
+                                    <div class="col-md-12">
+                                    <label for="">Upload image</label>
+                                        <input type="file" name="image" class="form-control">
+                                    </div>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="mb-0" for="">Original_price</label>

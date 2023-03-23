@@ -9,6 +9,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -26,28 +27,25 @@ class ProductController extends Controller
     public function store(Request $request)
     {   
   
-        // if ($image = $request->file('image')) {
-        //     $destinationPath = 'image/';
-        //     $prodImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-        //     $image->move($destinationPath, $prodImage);
-        //     $input['image'] = "$prodImage";
-        // }  
-      
-        $prod = Product::create([
-       
-            'name'=>$request->name,
-            'short_desc'=>$request->short_desc,
-            'description'=>$request->description,
-            'slug'=>$request->slug,
-            'image'=>$request->prodImage,
-            'sell_price'=>$request->sell_price,
-            'orig_price'=>$request->orig_price,
-            'qty'=>$request->qty,
-            'status'=>$request->status == true ? '1':'0',
-            'trending'=>$request->trending == true ? '1':'0',
-            'category_id'=>$request->category
-        ]);
-        return redirect('product');
+        $product= new Product();
+        $product->name = $request->input("name");
+        $product->short_desc = $request->input("short_desc");
+        $product->description = $request->input("description");
+        $product->slug = $request->input("slug");
+        if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = $image->getClientOriginalName();
+                $image = $image->storeAs('public/product', $imageName);
+                $product->image = $imageName;
+        }
+        $product->sell_price = $request->input("sell_price");
+        $product->orig_price = $request->input("orig_price");
+        $product->qty = $request->input("qty");
+        $product->status = $request->input("status")==true? '1':'0';
+        $product->trending = $request->input("trending")==true? '1':'0';
+        $product->category_id = $request->input("category");
+        $product->save();
+       return redirect('/admin/product')->with('status', "Product add sucessfully");
     }
 
     public function show($id)
@@ -63,21 +61,29 @@ class ProductController extends Controller
     }
     public function update(Request $request, $id)
     {
-        $prod = Product::find($id);
-        $prod->update([
-            'name'=>$request->name,
-            'short_desc'=>$request->short_desc,
-            'description'=>$request->description,
-            'slug'=>$request->slug,
-            'image'=>$request->image,
-            'sell_price'=>$request->sell_price,
-            'orig_price'=>$request->orig_price,
-            'qty'=>$request->qty,
-            'status'=>$request->status == true ? '1':'0',
-            'trending'=>$request->trending == true ? '1':'0',
-            'category_id'=>$request->category
-        ]);
-        return redirect('product');
+        $product = Product::find($id);
+        $product->name = $request->input("name");
+        $product->short_desc = $request->input("short_desc");
+        $product->description = $request->input("description");
+        $product->slug = $request->input("slug");
+        if ($request->hasFile('image')) {
+            $path = 'public/product/'.$product->image;
+                if(File::exists($path)){
+                    File::delete($path);
+                }
+                $image = $request->file('image');
+                $imageName = $image->getClientOriginalName();
+                $image = $image->storeAs('public/product', $imageName);
+                $product->image = $imageName;
+        }
+        $product->sell_price = $request->input("sell_price");
+        $product->orig_price = $request->input("orig_price");
+        $product->qty = $request->input("qty");
+        $product->status = $request->input("status")==true? '1':'0';
+        $product->trending = $request->input("trending")==true? '1':'0';
+        $product->category_id = $request->input("category");
+        $product->save();
+       return redirect('/admin/product')->with('status', "Product add sucessfully");
     }
     public function addToCart(Request $request)
     { 

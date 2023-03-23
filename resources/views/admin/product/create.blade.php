@@ -8,7 +8,7 @@
                     <h4>Dodaj proizvod</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ url('product/create') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('admin/product/create') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                         <div class="row">
                             <div class="col-md-12  mb-2">
@@ -17,7 +17,7 @@
                                     <option selected>Izaberi kategoriju</option>
                                 @foreach($categories as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
+                                @endforeach 
                                         </select>
                             </div>
                             <div class="col-md-12">

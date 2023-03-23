@@ -25,11 +25,13 @@
                                         <input type="text" name="slug" value="{{ $categories->slug }}" placeholder="Unesi slug" class="form-control">
                                     </div>
                                     <div class="col-md-12">
-                                        <label for="">Upload image</label>
-                                        <input type="file" name="image" class="form-control" required>
-                                        <label for="">Trenutna slika</label>
-                                        <input type="hidden" name="old_image" value="{{ $categories->image }}">
-                                        <img src="../uploads/{{ $categories->image }}>" height="50px" width="50px" alt="">
+                                    @if($categories->image)
+                                        <img src="{{ asset('storage/category/'.$categories->image) }}" height="50px" width="50px" alt="">
+                                    @endif
+                                    </div>
+                                    <div class="col-md-12">
+                                    <label for="">Upload image</label>
+                                        <input type="file" name="image" class="form-control">
                                     </div>
                                     <div class="col-md-12">
                                 <label for="">Status</label>

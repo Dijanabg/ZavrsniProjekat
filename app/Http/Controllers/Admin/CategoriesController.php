@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class CategoriesController extends Controller
 {
@@ -22,13 +23,18 @@ class CategoriesController extends Controller
     }
     public function store(Request $request)
     {
-       $new_cat = Category::create([
-            'name'=>$request->name,
-            'slug'=>$request->slug,
-            'image'=>$request->image,
-            'status'=>$request->status
-       ]);
-       return redirect('categories');
+        $category= new Category();
+        $category->name = $request->input("name");
+        $category->slug = $request->input("slug");
+        if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = $image->getClientOriginalName();
+                $image = $image->storeAs('public/category', $imageName);
+                $category->image = $imageName;
+        }
+        $category->status = $request->input("status")==true? '1':'0';
+        $category->save();
+       return redirect('/admin/categories')->with('status', "Category add sucessfully");
     }
     public function show( $id)
     {
@@ -42,14 +48,22 @@ class CategoriesController extends Controller
     }
     public function update(Request $request,  $id)
     {
-        $cat = Category::find($id);
-        $cat->update([
-            'name'=>$request->name,
-            'slug'=>$request->slug,
-            'image'=>$request->image,
-            'status'=>$request->status == true ? '1':'0',
-        ]);
-        return redirect('categories.index');
+        $category= Category::findOrFail($id);
+        $category->name = $request->input("name");
+        $category->slug = $request->input("slug");
+        if ($request->hasFile('image')) {
+                $path = 'public/category/'.$category->image;
+                if(File::exists($path)){
+                    File::delete($path);
+                }
+                $image = $request->file('image');
+                $imageName = $image->getClientOriginalName();
+                $image = $image->storeAs('public/category', $imageName);
+                $category->image = $imageName;
+        }
+        $category->status = $request->input("status")==true? '1':'0';
+        $category->update();
+       return redirect('/admin/categories')->with('status', "Category updated sucessfully");
     }
     public function destroy($id)
     {

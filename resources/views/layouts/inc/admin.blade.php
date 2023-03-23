@@ -109,13 +109,21 @@
                 @yield('content')
             </div>
         </main>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="{{ asset('admin/js/jquery-3.6.0.min.js') }}" defer></script>
         <script src="{{ asset('admin/js/bootstrap.bundle.min.js') }}" defer></script>
         <script src="{{ asset('admin/js/perfect-scrollbar.min.js') }}" defer></script>
         <script src="{{ asset('admin/js/smooth-scrollbar.min.js') }}" defer></script>
 
         <script src="{{ asset('admin/js/custom.js') }}"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        @if(session('status'))
+        
+            <script>
+                swall("{{ session('status') }}");
+            </script>
+       
+        @endif
+        
 
     </body>
 </html> 

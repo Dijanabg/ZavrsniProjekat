@@ -24,7 +24,7 @@
                                     <tr>
                                         <td>{{ ucfirst($item->id) }}</td>
                                         <td class="text-sm">{{ ucfirst($item->name) }}</td>
-                                        <td class="text-sm">{{ ucfirst($item->image) }}</td>
+                                        <td class="text-sm"><img src="{{ asset('storage/product/'.$item->image) }}" alt=""></td>
                                         
                                         <td class="text-sm">{{ ucfirst($item->status) }}</td>
                                         <td class="text-sm">{{ ucfirst($item->trending) }}</td>

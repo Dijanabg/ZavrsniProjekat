@@ -23,7 +23,7 @@
                                     <tr>
                                         <td>{{ ucfirst($item->id) }}</td>
                                         <td>{{ ucfirst($item->name) }}</td>
-                                        <td>{{ ucfirst($item->image) }}</td>
+                                        <td><img src="{{ asset('/storage/category/'.$item->image) }}" alt=""></td>
                                         <td>{{ ucfirst($item->status) }}</td>
                                        
                                         

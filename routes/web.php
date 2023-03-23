@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/dashboard', function(){ return view('admin.index'); });
-        Route::get('/admin/categories', [CategoriesController::class, 'index'])->name('categories.index'); //prikaz svih kategorija
+        Route::get('/admin/categories', [CategoriesController::class, 'index'])->name('admin.categories'); //prikaz svih kategorija
         Route::get('/admin/categories/create', [CategoriesController::class, 'create'])->name('categories.create'); //forma za unos nove kategorije
         Route::post('/admin/categories/create', [CategoriesController::class, 'store'])->name('categories.store'); //cuva novu kategoriju u bazu
         Route::get('/admin/categories/{id}', [CategoriesController::class, 'show'])->name('categories.show'); //prikaz jedne kategorije
