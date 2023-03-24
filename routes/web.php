@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\OrderController;
+use App\Http\Controllers\Admin\StoreController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\Admin\CategoriesController;
@@ -57,18 +58,23 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/categories', [CategoriesController::class, 'index'])->name('admin.categories'); //prikaz svih kategorija
         Route::get('/admin/categories/create', [CategoriesController::class, 'create'])->name('categories.create'); //forma za unos nove kategorije
         Route::post('/admin/categories/create', [CategoriesController::class, 'store'])->name('categories.store'); //cuva novu kategoriju u bazu
-        Route::get('/admin/categories/{id}', [CategoriesController::class, 'show'])->name('categories.show'); //prikaz jedne kategorije
         Route::get('/admin/categories/{id}/edit', [CategoriesController::class, 'edit'])->name('categories.edit'); //forma za izmenu podataka odredjene kategorije
         Route::put('/admin/categories/{id}/edit', [CategoriesController::class, 'update'])->name('categories.update'); //menja podatke u bazi
         Route::delete('/admin/categories/{id}', [CategoriesController::class, 'destroy'])->name('categories.destroy'); //brise kategoriju iz baze
     
-        Route::get('/admin/product',[ProductController::class, 'index'])->name('product.index'); //prikaz svih kategorija
-        Route::get('/admin/product/create',[ProductController::class, 'create'])->name('product.create'); //forma za unos nove kategorije
-        Route::post('/admin/product/create',[ProductController::class, 'store'])->name('product.store'); //cuva novu kategoriju u bazu
-        
-        Route::get('/admin/product/{id}/edit',[ProductController::class, 'edit'])->name('product.edit'); //forma za izmenu podataka odredjene kategorije
-        Route::put('/admin/product/{id}/edit',[ProductController::class, 'update'])->name('product.update'); //menja podatke u bazi
-        Route::delete('/admin/product/{id}',[ProductController::class, 'destroy'])->name('product.destroy'); //brise kategoriju iz baze
+        Route::get('/admin/product',[ProductController::class, 'index'])->name('product.index'); 
+        Route::get('/admin/product/create',[ProductController::class, 'create'])->name('product.create'); 
+        Route::post('/admin/product/create',[ProductController::class, 'store'])->name('product.store'); 
+        Route::get('/admin/product/{id}/edit',[ProductController::class, 'edit'])->name('product.edit'); 
+        Route::put('/admin/product/{id}/edit',[ProductController::class, 'update'])->name('product.update'); 
+        Route::delete('/admin/product/{id}',[ProductController::class, 'destroy'])->name('product.destroy'); 
+
+        Route::get('/admin/store',[StoreController::class, 'index'])->name('store.index'); 
+        Route::get('/admin/store/create',[StoreController::class, 'create'])->name('store.create');
+        Route::post('/admin/store/create',[StoreController::class, 'store'])->name('store.store'); 
+        Route::get('/admin/store/{id}/edit',[StoreController::class, 'edit'])->name('store.edit'); 
+        Route::put('/admin/store/{id}/edit',[StoreController::class, 'update'])->name('store.update'); 
+        Route::delete('/admin/store/{id}',[StoreController::class, 'destroy'])->name('store.destroy'); 
     });
 });
 

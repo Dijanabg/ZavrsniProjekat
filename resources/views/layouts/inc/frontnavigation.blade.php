@@ -13,16 +13,17 @@
           <a class="nav-link text-white" href="{{ url('/categories') }}">Kategorije</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="">Kontakt</a>
+          <a class="nav-link text-white" href="{{ url('/contact') }}">Kontakt</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="">Moje porudžbine</a>
-        </li>
+        
         
         @if (Route::has('login'))
         <li class="nav-item" >
           @auth
           <a href="{{url('/cart') }}" class="nav-link text-white">Korpa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{{ url('/userorders') }}">Moje porudžbine</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >

@@ -23,6 +23,7 @@ class StoreController extends Controller
         $store= new Store();
         $store->city = $request->input("city");
         $store->adress = $request->input("adress");
+        $store->phone = $request->input("phone");
         $store->work_time = $request->input("work_time");
         
         $store->save();
@@ -42,6 +43,7 @@ class StoreController extends Controller
         $store= Store::findOrFail($id);
         $store->city = $request->input("city");
         $store->adress = $request->input("adress");
+        $store->phone = $request->input("phone");
         $store->work_time = $request->input("work_time");
         $store->update();
        return redirect('/admin/store')->with('status', "Store updated sucessfully");
@@ -50,7 +52,7 @@ class StoreController extends Controller
     {
         $store = store::find($id);
         $store->delete();
-        return redirect('store');
+        return redirect('/admin/store');
     }
 }
 
