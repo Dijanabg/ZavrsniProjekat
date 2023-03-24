@@ -1,3 +1,5 @@
+@extends('layouts.inc.front')
+@section('content')
 <div class="py-3 bg-secondary">
     <div class="container">
         <h6 class="text-white fs-4">
@@ -18,6 +20,7 @@
                                 <th>ID</th>
                                 <th>Tracking broj</th>
                                 <th>Cena</th>
+                                <th>Status</th>
                                 <th>Datum</th>
                                 <th>Akcija</th>
                             </tr>
@@ -25,24 +28,14 @@
                         <tbody>
                                 @foreach ($orders as $item)
                                     <tr>
-                                        <td><?= $item['id']; ?></td>
-                                        <td><?= $item['trackingNo']; ?></td>
-                                        <td><?= $item['totalPrice']; ?></td>
-                                        <td><?= $item['created_at']; ?></td>
-                                        <td><a href="viewOrder.php?t=<?= $item['trackingNo']; ?>" class="btn btn-primary">Vidi detalje</a></td>
+                                        <td>{{ ucfirst($item->id) }}</td>
+                                        <td>{{ ucfirst($item->tracking_no) }}</td>
+                                        <td>{{ ucfirst($item->total_price) }}</td>
+                                        <td>{{ $item->status == '0'?'Slanje':'Završeno' }}</td>
+                                        <td>{{ ucfirst($item->created_at) }}</td>
+                                        <td><a href="" class="btn btn-primary">Vidi detalje</a></td>
                                     </tr>
-                                <?php
-                                }
-                            } else {
-                                ?>
-                                <tr>
-                                    <td colspan="5">Nema realizovanih porudžbina</td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-
-
+                                @endforeach
                         </tbody>
                     </table>
 
@@ -51,3 +44,4 @@
         </div>
     </div>
 </div>
+@endsection

@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Frontend\ContactController;
  use App\Http\Controllers\Frontend\FrontendController;
 
 /*
@@ -35,6 +37,7 @@ Route::get('/productsbycat/{id}',[FrontendController::class, 'catProducts'])->na
 Route::post('/productsbycat/{id}',[FrontendController::class, 'catProducts'])->name('frontend.catprod'); 
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 Route::post('/product/{id}', [ProductController::class, 'addToCart'])->name('product.tocart');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
 Route::middleware('auth')->group(function () {
     
@@ -47,6 +50,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/check', [CheckoutController::class, 'index']);
     Route::post('/check', [CheckoutController::class, 'placeorder']);
+    Route::get('/userorders', [OrderController::class, 'index'])->name('userorders.index');
 
     Route::middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/dashboard', function(){ return view('admin.index'); });
