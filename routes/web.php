@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\StoreController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\OrderAdminController;
 use App\Http\Controllers\Frontend\ContactController;
  use App\Http\Controllers\Frontend\FrontendController;
 
@@ -75,6 +76,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/store/{id}/edit',[StoreController::class, 'edit'])->name('store.edit'); 
         Route::put('/admin/store/{id}/edit',[StoreController::class, 'update'])->name('store.update'); 
         Route::delete('/admin/store/{id}',[StoreController::class, 'destroy'])->name('store.destroy'); 
+
+        Route::get('/admin/order',[OrderAdminController::class, 'index'])->name('order.index'); 
+        //Route::get('/admin/order/show', [OrderAdminController::class, 'show'])->name('order.show');
+        Route::get('/admin/order/{id}/edit',[OrderAdminController::class, 'edit'])->name('order.edit'); 
+        Route::put('/admin/order/{id}/edit',[OrderAdminController::class, 'update'])->name('order.update'); 
+        Route::delete('/admin/order/{id}',[OrderAdminController::class, 'destroy'])->name('order.destroy'); 
     });
 });
 

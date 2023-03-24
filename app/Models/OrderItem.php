@@ -15,18 +15,12 @@ class OrderItem extends Model
         'product_id',
         'price',
     ];
-    public function orderId(){
-        return $this->BelongsTo(Order::class,'order_id');
-    } public function user(){
-        return $this->belongsTo(User::class);
+    public function orders(){
+        return $this->BelongsTo(Order::class,'order_id','id');
+    } public function products(){
+        return $this->belongsTo(Product::class, 'product_id','id');
     }
-    // public function carts(){
-    //     return $this->BelongsTo(Cart::class,'product_id', 'product_id');
-    // } 
-    public function orderitems(){
-        return $this->hasMany(Product::class);
+    public function product(){
+        return $this->hasMany(Product::class,'product_id','id');
     }
-    // public function orders(){
-    //     return $this->hasMany(Order::class);
-    // }
 }
