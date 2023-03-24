@@ -21,6 +21,6 @@ class OrderItem extends Model
         return $this->belongsTo(Product::class, 'product_id','id');
     }
     public function product(){
-        return $this->hasMany(Product::class,'product_id','id');
+        return $this->hasMany(Product::class);
     }
 }

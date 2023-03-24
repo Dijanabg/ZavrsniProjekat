@@ -82,7 +82,7 @@
                                                         {{ $item->products->name }}
                                                         </td>
                                                         <td class="align-middle">
-                                                            <img src="{{ asset('storage/product/'.$item->product->image) }}" alt="" width="50px" height="50px">
+                                                            <img src="{{ asset('storage/product/'.$item->products->image) }}" alt="" width="50px" height="50px">
                                                         </td>
                                                         <td class="align-middle">
                                                         {{ $item->price }}
