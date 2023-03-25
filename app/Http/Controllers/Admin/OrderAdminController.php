@@ -20,7 +20,12 @@ class OrderAdminController extends Controller
     public function edit( $id)
     {
         $orders = Order::where('id', $id)->first();
-        // $order_items = OrderItem::where('product_id', Product::all());
-        return view('admin.orders.edit',compact('orders'));
+        return view('admin.orders.edit',['orders'=>$orders]);
+    }
+    public function update(Request $request, $id){
+        $orders = Order::findOrFail($id);
+        $orders->status = $request->input('status');
+        $orders->update();
+        return redirect('/admin/orders')->with('status', "Porudžbina je ažurirana");
     }
 }

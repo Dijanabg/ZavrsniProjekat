@@ -71,32 +71,40 @@
                                         <thead>
                                             <tr>
                                                 <th>Proizvod</th>
+                                                <th>Slika</th>
                                                 <th>Cena</th>
-                                                <th>Količina</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                                 @foreach($orders->order_items as $item)
                                                     <tr>
-                                                    <td class="align-middle">
-                                                        {{ $item->products->name }}
+                                                        <td class="align-middle">
+                                                            {{ $item->products->name }}
                                                         </td>
                                                         <td class="align-middle">
                                                             <img src="{{ asset('storage/product/'.$item->products->image) }}" alt="" width="50px" height="50px">
                                                         </td>
                                                         <td class="align-middle">
-                                                        {{ $item->price }}
-                                                        </td>
-                                                        <td class="align-middle">
-                                                        
+                                                            {{ $item->price }}
                                                         </td>
                                                     </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                     <hr>
-
-                                    
+                                    <h4 class="px-2"> Ukupna cena: <span class="float-end">{{ $orders->total_price}}</span>
+                                    <div class="mt-3">
+                                        <label for="">Status porudžbine</label>
+                                        <form action="{{ url('admin/order/'.$orders->id.'/edit') }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <select class="form-select" name="status">
+                                                <option value="0" {{ $orders->status == '0'? 'selected':'' }} >Slanje</option>
+                                                <option value="1" {{ $orders->status == '1'? 'selected':'' }} >Završeno</option>
+                                            </select>
+                                            <button type="submit" class="btn">Ažuriraj</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
