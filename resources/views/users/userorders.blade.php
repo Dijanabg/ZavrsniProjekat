@@ -22,7 +22,7 @@
                                 <th>Cena</th>
                                 <th>Status</th>
                                 <th>Datum</th>
-                                <th>Akcija</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -33,7 +33,7 @@
                                         <td>{{ ucfirst($item->total_price) }}</td>
                                         <td>{{ $item->status == '0'?'Slanje':'Završeno' }}</td>
                                         <td>{{ ucfirst($item->created_at) }}</td>
-                                        <td><a href="" class="btn btn-primary">Vidi detalje</a></td>
+                                        
                                     </tr>
                                 @endforeach
                         </tbody>

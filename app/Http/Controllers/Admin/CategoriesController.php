@@ -69,6 +69,6 @@ class CategoriesController extends Controller
     {
         $cat = Category::find($id);
         $cat->delete();
-        return redirect('categories');
+        return redirect('admin/categories');
     }
 }

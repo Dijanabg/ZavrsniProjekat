@@ -26,7 +26,7 @@
                                     </div>
                                     <div class="col-md-12">
                                     @if($categories->image)
-                                        <img src="{{ asset('storage/category/'.$categories->image) }}" height="50px" width="50px" alt="">
+                                        <img src="{{ asset('storage/category/'.$categories->image) }}" height="" class="w-75 " alt="">
                                     @endif
                                     </div>
                                     <div class="col-md-12">

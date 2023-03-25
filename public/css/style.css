@@ -110,7 +110,9 @@ section{
    border-radius: .5rem;
    text-transform: capitalize;
 }
-
+.card .card-body{
+   height: 250px;
+}
 .btn:hover,
 .option-btn:hover,
 .delete-btn:hover{

@@ -12,10 +12,10 @@
                     <div class="owl-carousel owl-theme">
                         @foreach ($category as $item)
                             <div class="item">
-                                <a class="text-decoration-none text-dark " href="{{ url('/') }}">
+                                <a class="text-decoration-none text-dark " href="{{ url('/productsbycat'.'/'. $item->id) }}">
                                     <div class="card shadow">
                                         <div class="card-body">
-                                            <img class="w-80 " height='150px' src="{{ asset('uploads/slides/slider2.jpg') }}" alt="Category image">
+                                            <img class="w-75 " height='150px' src="{{ asset('/storage/category/'.$item->image) }}" alt="Category image">
                                             <h4 class="text-center text-dark mt-5">{{ $item->name }}</h4>
                                         </div>
                                     </div>
@@ -36,7 +36,7 @@
                                 <a class="text-decoration-none text-dark " href="">
                                     <div class="card shadow">
                                         <div class="card-body">
-                                            <img class="w-80 " height='130px' src="" alt="Product image">
+                                            <img src="{{ asset('/storage/product/'.$item->image) }}" class="w-80 " height='130px' src="" alt="Product image">
                                             <h4 class="text-center text-dark mt-5">{{ $item->name}}</h4>
                                             <span class="">{{ $item->sell_price}}</span>
                                         </div>

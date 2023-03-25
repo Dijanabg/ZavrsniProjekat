@@ -20,7 +20,7 @@
                                 <a class="text-dark  text-decoration-none " href="{{ url('/productsbycat'.'/'. $item->id) }}">
                                     <div class="card shadow">
                                         <div class="card-body text-center mt-5">
-                                            <img class="w-50 " height='100px' src="" alt="Category image">
+                                            <img src="{{ asset('/storage/category/'.$item->image) }}" class="w-50 " height='100px' src="" alt="Category image">
                                             <h4 class="text-center fs-3 mt-5">{{ $item->name }}</h4>
                                         </div>
                                     </div>

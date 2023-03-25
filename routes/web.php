@@ -41,6 +41,7 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.s
 Route::post('/product/{id}', [ProductController::class, 'addToCart'])->name('product.tocart');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
+
 Route::middleware('auth')->group(function () {
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
