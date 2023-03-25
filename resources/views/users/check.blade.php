@@ -50,7 +50,7 @@
                         <div class="col-md-5">
                             <h5>Detalji porudžbine</h5>
                             <hr>
-                            @php $totalPrice = 0 @endphp
+                           
                             @foreach ($carts as $citem)
                                 <div class="card product_data shadow-sm mb-3">
                                     <div class="row align-items-center">
@@ -69,10 +69,9 @@
 
                                     </div>
                                 </div>
-                                @php $totalPrice += $citem -> products ->sell_price @endphp
                             @endforeach
-                            <input type="hidden" name="totalPrice" value="{{ $totalPrice}}">
-                            <h5>Ukupna cena : <span class="float-end fw-bold">{{ $totalPrice}}</span></h5>
+                            <input type="hidden" name="totalPrice" value="{{ $total_rice}}">
+                            <h5>Ukupna cena : <span class="float-end fw-bold">{{ $total_price}}</span></h5>
                             <div>
                                 <input type="hidden" name="payMode" value="pp">
                                 <button type="submit" name="placeOrderBtn" class="btn btn-primary w-100">Potvrdi porudžbinu</button>

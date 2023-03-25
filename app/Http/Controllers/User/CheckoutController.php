@@ -33,7 +33,12 @@ class CheckoutController extends Controller
         $order->phone = $request->input('phone');
         $order->pincode = $request->input('pincode');
         $order->adress = $request->input('adress');
-        $order->total_price = $request->input('totalPrice');
+        $total_price=0;
+        $order_total = Cart::where('user_id',Auth::id())->get();
+        foreach($order_total as $item){
+            $total_price += $item->products->sell_price;
+        }
+        $order->total_price = $total_price;
         $order->tracking_no = 'dijana'.rand(1111, 9999);
         $order->save();
 
