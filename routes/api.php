@@ -30,18 +30,18 @@ Route::get('/users/{id}', [UsersController::class, 'show']);
 //Login
 Route::post('/login', [AuthController::class, 'login']);
 
-//  Route::get('/categories',[CategoryApiController::class, 'index']);
-// Route::get('/categories/{id}', [CategoryApiController::class, 'show']);
-// Route::resource('category', CategoryApiController::class)->only(['index', 'show']);
-// Route::resource('products', ProductApiController::class)->only(['index', 'show']);
-// //***********************Route::resource('cart', CartController::class)->only(['index', 'show']);
-// Route::group(['middleware' => ['auth:sanctum']], function () {
+ //Route::get('/categories',[CategoryApiController::class, 'index']);
+//Route::get('/categories/{id}', [CategoryApiController::class, 'show']);
+Route::resource('category', CategoryApiController::class)->only(['index', 'show']);
+Route::resource('products', ProductApiController::class)->only(['index', 'show']);
+//***********************Route::resource('cart', CartController::class)->only(['index', 'show']);
+Route::group(['middleware' => ['auth:sanctum']], function () {
     
     
-//     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 
-//     //Route::middleware(['auth', 'isAdmin'])->group(function () {
-//         Route::resource('products', CategoryApiController::class)->only(['update', 'store', 'destroy']);
-//         Route::resource('products', ProductApiController::class)->only(['update', 'store', 'destroy']);
-//     //});
-// });
+    
+        Route::resource('products', CategoryApiController::class)->only(['update', 'store', 'destroy']);
+        Route::resource('products', ProductApiController::class)->only(['update', 'store', 'destroy']);
+    });
+

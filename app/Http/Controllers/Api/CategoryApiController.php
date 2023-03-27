@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -9,13 +9,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\CategoryResource;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\CategoryCollection;
 
 class CategoryApiController extends Controller
 {
     public function index()
     {
-        $cat = DB::table('categories')->get();
-        return $cat;
+        $categories = Category::all();
+        return new CategoryCollection($categories);
     }
 
     /**
@@ -32,29 +33,30 @@ class CategoryApiController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|string|max:255',
-            'body' => 'required|string|max:100',
+            'name' => 'required|string|max:255',
             'slug' => 'required|string',
-            'excerpt' => 'required',
-            'category_id' => 'required'
+            'image' => 'required',
+            'status' => 'required'
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors());
         }
-
-        $cat = Category::create([
-            'title' => $request->title,
-            'body' => $request->body,
-            'slug' => $request->slug,
-            'excerpt' => $request->excerpt,
-            'category_id' => $request->category_id,
-            'user_id' => Auth::user()->id
-        ]);
-
+        $category= new Category();
+        $category->name = $request->input("name");
+        $category->slug = $request->input("slug");
+        if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = $image->getClientOriginalName();
+                $image = $image->storeAs('public/category', $imageName);
+                $category->image = $imageName;
+        }
+        $category->status = $request->input("status")==true? '1':'0';
+        $category->save();
+        
         return response()->json([
-            'Post je uspesno sacuvan',
-            new CategoryResource($cat)
+            'Kategorija je uspesno sacuvana',
+            new CategoryResource($category)
         ]);
     }
 

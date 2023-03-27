@@ -8,7 +8,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductResource extends JsonResource
 {
-    public static $wrap = 'product';
+    public static $wrap = 'products';
     public function toArray($request)
     {
         return [
