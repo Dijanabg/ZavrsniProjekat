@@ -3,10 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\Api\ProductApiController;
-use App\Http\Controllers\API\CategoryApiController;
+use App\Http\Controllers\Api\CategoryApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,13 +35,26 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::resource('category', CategoryApiController::class)->only(['index', 'show']);
 Route::resource('products', ProductApiController::class)->only(['index', 'show']);
 //***********************Route::resource('cart', CartController::class)->only(['index', 'show']);
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::middleware(['auth:sanctum', 'isApiAdmin'])->group(function () {
+    Route::get('/checkingAuthenticated', function() {
+        return response()->json(['message'=>'You are in', 'status=>200'], 200);
+    });
+    Route::resource('category', CategoryApiController::class)->only(['update', 'store', 'destroy']);
+    Route::resource('products', ProductApiController::class)->only(['update', 'store', 'destroy']);
+    Route::resource('orders', OrderApiController::class)->only(['update']);
+});
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+
+    Route::resource('orders', ProductApiController::class)->only(['index', 'show', 'store']);
+});
     
     
-    Route::post('/logout', [AuthController::class, 'logout']);
+    // Route::post('/logout', [AuthController::class, 'logout']);
 
     
-        Route::resource('products', CategoryApiController::class)->only(['update', 'store', 'destroy']);
-        Route::resource('products', ProductApiController::class)->only(['update', 'store', 'destroy']);
-    });
+    //     Route::resource('products', CategoryApiController::class)->only(['update', 'store', 'destroy']);
+    //     Route::resource('products', ProductApiController::class)->only(['update', 'store', 'destroy']);
+    // });
 

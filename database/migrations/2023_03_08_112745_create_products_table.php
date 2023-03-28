@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('short_desc');
             $table->text('description');
             $table->string('slug')->unique();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('sell_price');
             $table->string('orig_price');
             $table->string('qty');
