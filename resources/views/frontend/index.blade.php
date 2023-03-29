@@ -33,7 +33,7 @@
                     <div class="owl-carousel owl-theme">
                         @foreach($products as $item) 
                             <div class="item">
-                                <a class="text-decoration-none text-dark " href="">
+                                <a class="text-decoration-none text-dark " href="{{ url('/product'.'/'. $item->id) }}">
                                     <div class="card shadow">
                                         <div class="card-body">
                                             <img src="{{ asset('/storage/product/'.$item->image) }}" class="w-80 " height='130px' src="" alt="Product image">

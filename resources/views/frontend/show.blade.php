@@ -14,7 +14,7 @@
                 <div class="row topview">
                     <div class="col-md-4">
                         <div class="shadow px-2">
-                            <img src="" alt="Product image" class="w-250px" height="250px" >
+                            <img src="{{ asset('/storage/product/'.$products->image) }}" alt="Product image" class="w-250px" height="250px" >
                         </div>
 
                     </div>

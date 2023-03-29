@@ -24,8 +24,9 @@ class OrderAdminController extends Controller
     }
     public function update(Request $request, $id){
         $orders = Order::findOrFail($id);
-        $orders->status = $request->input('status');
+        $orders->status = $request->input('status')==true? '1':'0';
         $orders->update();
-        return redirect('/admin/orders')->with('status', "Porudžbina je ažurirana");
+        return redirect('/admin/order')->with('status', "Porudžbina je ažurirana");
     }
 }
+ 

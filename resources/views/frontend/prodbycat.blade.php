@@ -22,7 +22,7 @@
                                         <a class="text-dark  text-decoration-none " href="{{ url('/product'.'/'. $item->id) }}">
                                             <div class="card shadow" style="height: 280px" >
                                                 <div class="card-body text-center mt-5">
-                                                    <img class="w-50 mb-3" height='100px' src="" alt="Product image">
+                                                    <img class="w-50 mb-3" height='100px' src="{{ asset('/storage/product/'.$item->image) }}" alt="Product image">
                                                     <h4 class="text-center mt-5 mb-5">{{ $item->name}}</h4>
                                                 
                                                     <h4 class="  text-center text-danger mt-5">{{ $item->sell_price}} DIN</h4>

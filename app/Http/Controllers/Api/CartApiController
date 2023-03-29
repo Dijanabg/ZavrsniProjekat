@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Models\Cart;
+use App\Models\Product;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
+class CartController extends Controller
+{
+    public function store(Request $request){
+        $product_id = $request->input('product_id');
+                if (Auth::check()) {
+                    $prod_check = Product::where('id', $product_id)->first();
+                    if ($prod_check) {
+                        if (Cart::where('prod_id', $product_id)->where('user_id', Auth::id())->get()){
+                            return response()->json(['status' => $prod_check->name . ' Already Added to Cart']);
+                        } else {
+                            $cartitem = new Cart();
+                            $cartitem->prod_id = $product_id;
+                            $cartitem->user_id = Auth::id();
+                            $cartitem->save();
+                            return response()->json(['status' => $prod_check->name . ' Added to Cart']);
+                        }
+                    }
+                } else return response()->json(['status' => 'Login to Continue']);
+    }
+}

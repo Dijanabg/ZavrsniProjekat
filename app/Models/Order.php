@@ -18,7 +18,7 @@ class Order extends Model
         'email',
         'phone',
         'pincode',
-        'adress',
+        'adress', 
         'total_price',
         'pay_mode',
         'pay_id',

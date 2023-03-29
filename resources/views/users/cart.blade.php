@@ -11,6 +11,10 @@
 
 <div class="py-5">
     <div class="container">
+    <select name="currency" id="currency" onchange="currencyChange()">
+        <option value="eur" >EUR</option>
+        <option value="rsd" selected>DIN</option>
+    </select>
         <div class="card card-body shadow mt-3">
             <div class="row">
                 <div class="col-md-12">
@@ -20,7 +24,7 @@
                                     <h6>Proizvod</h6>
                                 </div>
                                 <div class="col-md-2 text-center">
-                                    <h6>Cena</h6>
+                                    <h6>Cena  <span id="currency_symbol">  DIN</span> </h6>
                                 </div>
                                 <div class="col-md-2 ">
                                     <h6>Akcija</h6>
@@ -37,7 +41,7 @@
                                             <div class="col-md-4 text-center">
                                                 <h5>{{ ucfirst($citem->products->name) }}</h5>
                                             </div>
-                                            <div class="col-md-2 text-center">
+                                            <div class="col-md-2 text-center total">
                                                 <h3 class="">{{ ucfirst($citem->products->sell_price) }} </h3>
                                             </div>
                                             <div class="col-md-2">
@@ -53,10 +57,12 @@
                                         </div>
                                     </div>
                             </div>
+                           
                             @php $totalPrice += $citem -> products ->sell_price @endphp
+                           
                             @endforeach
-                            <div class="text-center">
-                                <h5><span class=" fw-bold fs-3"> Ukupna cena: {{ $totalPrice}}</span></h5>
+                            <div class="text-center" >
+                                <h5><span class=" fw-bold fs-3"> Ukupna cena: {{ $totalPrice}} DIN</span></h5>
                             </div>
                             <div class=" float-end">
                                 <a href="{{ url('/check') }}" class="btn btn-outline-primary">Poruči</a>
@@ -74,4 +80,31 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+    let default_currency = 'rsd';
+function currencyChange(){
+    const currency = $("#currency").val();
+    const url = "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/"+default_currency+"/"+currency+".json";
+    $.getJSON(url, function(data){
+        //console.log(data);
+        const total_all = $(".total");
+        console.log(total_all);
+        for(red of total_all){
+            console.log(red.innerText);
+            const red_float = parseFloat(red.innerText);
+            if(currency=="eur"){
+                red_novi = (red_float*data.eur).toFixed(2);
+                $("#currency_symbol").text("€");
+            }else{
+                red_novi = (red_float*data.rsd).toFixed(2);
+                $("#currency_symbol").text("DIN");
+            }
+            red.innerText = red_novi;
+        }
+        default_currency = currency;
+    });
+}
+</script>
 @endsection

@@ -95,7 +95,7 @@
                                     <h4 class="px-2"> Ukupna cena: <span class="float-end">{{ $orders->total_price}}</span>
                                     <div class="mt-3">
                                         <label for="">Status porudžbine</label>
-                                        <form action="{{ url('admin/order/'.$orders->id.'/edit') }}">
+                                        <form action="{{ url('admin/order/'.$orders->id.'/edit') }}" method="POST">
                                             @csrf
                                             @method('PUT')
                                             <select class="form-select" name="status">
