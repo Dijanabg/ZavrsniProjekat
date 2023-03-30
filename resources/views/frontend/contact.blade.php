@@ -73,13 +73,13 @@
         <div class="col-3 text-center">
             
             <div class="input-group mb-1">
-                <input type="text" id="search" autocomplete="off" class="form-control form-control-lg" placeholder="Grad">
+                <input type="text" id="search" name="search" autocomplete="off" class="form-control form-control-lg" placeholder="Potraži grad...">
             </div>
         </div>
 </div>
 
 <div class="row justify-content-center my-5  ">
-        <div class="col-8 text-center">
+        <div class="col-8 table-data text-center">
             <table class="table table-bordered" id="table">
                 <thead class="bg-secondary fs-4 text-white">
                     <tr>
@@ -90,7 +90,7 @@
                     </tr>
                 </thead>
                 <tbody class="fs-4 ">
-                    @foreach($store as $item)
+                    @foreach($stores as $item)
                             <tr>
                                 <td>{{ ucfirst($item->city) }}</td>
                                 <td>{{ ucfirst($item->adress) }}</td>
@@ -101,5 +101,5 @@
                 </tbody>
             </table>
         </div>
-    </div>
-    @endsection
+</div>
+@endsection

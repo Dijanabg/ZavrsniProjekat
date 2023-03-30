@@ -10,7 +10,11 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $store = Store::all();
-        return view('frontend.contact',['store'=>$store]);
+        $stores = Store::all();
+        return view('frontend.contact',['stores'=>$stores]);
     }
+    
 }
+    
+    
+
