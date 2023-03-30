@@ -13,8 +13,6 @@ class OrderAdminController extends Controller
     public function index()
     {
         $orders = Order::all();
-
-        
         return view('admin.orders.index', ['orders'=>$orders]);
     }
     public function edit( $id)

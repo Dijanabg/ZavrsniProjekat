@@ -3,19 +3,22 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OrderResource;
 use App\Http\Resources\OrderCollection;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\OrderWithItemsResource;
 
-class OrderController extends Controller
+class OrderApiController extends Controller
 {
     public function index()
     {
         $orders = Order::all();
         return new OrderCollection($orders);
     }
+
 
     public function store(Request $request)
     {
@@ -62,7 +65,7 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
-        return new OrderResource($order);
+        return new OrderWithItemsResource($order);
     }
 
     public function update(Request $request, Order $order)

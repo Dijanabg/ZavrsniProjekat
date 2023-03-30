@@ -4,7 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\User\CartController;
+
+use App\Http\Controllers\Api\CartApiController;
+use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\ProductApiController;
 use App\Http\Controllers\Api\CategoryApiController;
 
@@ -47,7 +49,8 @@ Route::middleware(['auth:sanctum', 'isApiAdmin'])->group(function () {
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
 
-    Route::resource('orders', ProductApiController::class)->only(['index', 'show', 'store']);
+    Route::resource('cart', CartApiController::class)->only(['index', 'show', 'store', 'destroy']);
+    Route::resource('orders', OrderApiController::class)->only(['index', 'show', 'store']);
 });
     
     
