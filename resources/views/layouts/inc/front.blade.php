@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name') }}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('uploads/favicon.ico') }}">
         <!-- <link rel="icon" type="image/x-icon" href="../uploads/favicon.ico"> -->
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -27,12 +28,9 @@
         @include('layouts.inc.frontnavigation')
             <div>
                 @yield('content')
-            </div>
-        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+            </div> 
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" ></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
         <script src="{{ asset('js/owl.carousel.min.js') }}" defer></script>
-
-        @yield('scripts')
-    </body>
-</html> 
+        @include('layouts.inc.frontfooter')

@@ -40,6 +40,7 @@ Route::post('/productsbycat/{id}',[FrontendController::class, 'catProducts'])->n
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 Route::post('/product/{id}', [ProductController::class, 'addToCart'])->name('product.tocart');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+//Route::get('/contact', [ContactController::class, 'search'])->name('search');
 
 
 Route::middleware('auth')->group(function () {

@@ -6,14 +6,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 px-2">
-                <h2 class="text-center mb-2 mt-3">Kategorije</h2>
+                <h2 class="fs-2 w-responsive font-weight-bold text-center  mb-2 mt-3">Kategorije</h2>
                 <div class="underline mb-2"></div>
                 <hr class="text-danger mb-5">
                     <div class="owl-carousel owl-theme">
                         @foreach ($category as $item)
                             <div class="item">
                                 <a class="text-decoration-none text-dark " href="{{ url('/productsbycat'.'/'. $item->id) }}">
-                                    <div class="card shadow">
+                                    <div class="shadow-lg p-3 mb-5 bg-white rounded ">
                                         <div class="card-body">
                                             <img class="w-75 " height='150px' src="{{ asset('/storage/category/'.$item->image) }}" alt="Category image">
                                             <h4 class="text-center text-dark mt-5">{{ $item->name }}</h4>
@@ -27,18 +27,18 @@
         </div>
         <div class="row mt-5">
             <div class="col-md-12 px-2">
-                <h2 class="text-center mb-2 mt-3">Popularni proizvodi</h2>
+                <h2 class="fs-2 w-responsive font-weight-bold text-center  mb-2 mt-3">Popularni proizvodi</h2>
                 <div class="underline  mb-2"></div>
                 <hr class="text-danger mb-5">
                     <div class="owl-carousel owl-theme">
                         @foreach($products as $item) 
                             <div class="item">
                                 <a class="text-decoration-none text-dark " href="{{ url('/product'.'/'. $item->id) }}">
-                                    <div class="card shadow">
+                                    <div class="shadow-lg p-3 mb-5 bg-white rounded">
                                         <div class="card-body">
-                                            <img src="{{ asset('/storage/product/'.$item->image) }}" class="w-80 " height='130px' src="" alt="Product image">
+                                            <img src="{{ asset('/storage/product/'.$item->image) }}" class="w-80 " height='150px' src="" alt="Product image">
                                             <h4 class="text-center text-dark mt-5">{{ $item->name}}</h4>
-                                            <span class="">{{ $item->sell_price}}</span>
+                                            <h5 class="text-center text-dark mt-2">{{ $item->sell_price}}</h5>
                                         </div>
                                     </div>
                                 </a>
@@ -54,7 +54,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="row">
-                <h3 class="text-center text-uppercase mb-3 mt-5">O nama</h3>
+                <h3 class="fs-2 w-responsive font-weight-bold text-center text-uppercase mb-3 mt-5">O nama</h3>
                 <div class="underline  mb-2"></div>
                 <hr class="text-danger">
                 <div class="underline mb-2"></div>
@@ -86,7 +86,7 @@ Uvoznik smo i distributer poznatih robnih marki: Scott, Continental, Elan, Nordi
                     items: 3
                 },
                 1000: {
-                    items: 6
+                    items: 4
                 }
             }
         })

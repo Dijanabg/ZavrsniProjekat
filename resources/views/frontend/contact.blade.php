@@ -1,13 +1,13 @@
 @extends('layouts.inc.front')
 @section('content')
 
-<h2 class="h1-responsive font-weight-bold text-center my-4 mb-5">Kontaktirajte nas</h2>
+<h2 class="fs-2 w-responsive font-weight-bold text-center my-4 mt-5  mb-5">Kontaktirajte nas</h2>
 
 <p class="text-center fs-4 w-responsive mx-auto mb-2 mt-5">Da li imate neka pitanja za nas?</p>
 <p class="text-center fs-4 w-responsive mx-auto ">Molimo nemojte odlagati, pišite nam odmah.</p>
 <p class="text-center fs-4 w-responsive mx-auto ">Naš tim će Vam odgovoriti u najkraćem mogućem roku.</p>
 
-<div class="row px-5 mt-5">
+<div class="row px-5 mt-5 mb-5">
     <div class="col-md-6 mb-md-0 mb-5 mt-5">
         <form id="contact-form" name="contact-form" action="../code/mail.php" method="POST">
             <div class="row">
@@ -68,19 +68,13 @@
     </div>
 </div>
 
-<div class="row justify-content-center mb-1 ">
-<h2 class="text-center">Naše prodavnice</h2>
-        <div class="col-3 text-center">
-            
-            <div class="input-group mb-1">
-                <input type="text" id="search" name="search" autocomplete="off" class="form-control form-control-lg" placeholder="Potraži grad...">
-            </div>
-        </div>
+<div class="row justify-content-center mb-5 mt-5 ">
+<h3 class="fs-2 w-responsive font-weight-bold text-center">Naše prodavnice</h3>
 </div>
 
-<div class="row justify-content-center my-5  ">
+<div class="row justify-content-center my-5 mt-5 ">
         <div class="col-8 table-data text-center">
-            <table class="table table-bordered" id="table">
+            <table class="table table-bordered mt-5" id="table">
                 <thead class="bg-secondary fs-4 text-white">
                     <tr>
                         <th>Grad</th>

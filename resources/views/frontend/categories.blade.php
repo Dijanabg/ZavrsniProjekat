@@ -5,7 +5,7 @@
     <div class="container">
         <h6 class="text-white fs-6"> 
             <a class="text-decoration-none text-white fs-6" href="{{ url('/') }}">Home /</a> Kategorije /
-        
+        </h6>
     </div>
 </div>
 <div class="py-5">
@@ -13,7 +13,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="row ">
-                    <h1 class="col-md-12 mb-5 mt-5">Kategorije</h1>
+                    <h1 class="fs-2 w-responsive font-weight-bold text-center col-md-12 mb-5 mt-5">Kategorije</h1>
                     <hr>
                         @foreach ($category as $item)
                             <div class="col-md-3 mb-5 mt-5">

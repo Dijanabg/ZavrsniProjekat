@@ -32,7 +32,7 @@
                             </div>
                             <div id="">
                                 @php $totalPrice = 0 @endphp
-                                @foreach ($carts as $citem)
+                                @foreach($carts as $citem)
                                     <div class="card product_data shadow-sm mb-3">
                                         <div class="row align-items-center">
                                             <div class="col-md-2 text-center">
@@ -66,12 +66,6 @@
                             </div>
                             <div class=" float-end">
                                 <a href="{{ url('/check') }}" class="btn btn-outline-primary">Poruči</a>
-                            </div>
-                           
-                      
-
-                            <div class="card card-body text-center shadow">
-                                <h4 class="py-3">Vaša korpa je prazna</h4>
                             </div>
                       
                     </div>

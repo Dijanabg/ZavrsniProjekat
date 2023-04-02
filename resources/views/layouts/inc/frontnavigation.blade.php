@@ -1,6 +1,6 @@
 <nav class="navbar fs-3 navbar-expand-lg navbar-dark bg-body-dark bg-dark shadow">
   <div class="container">
-    <a class="navbar-brand bg-danger fs-6 " href="{{ url('/') }}"> .HELL SHOP. </a><img src="../uploads/favicon.ico" alt="">
+    <a class="navbar-brand bg-danger fs-6 " href="{{ url('/') }}"> .HELL SHOP. </a><img src="{{ asset('uploads/favicon.ico') }}" alt="">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

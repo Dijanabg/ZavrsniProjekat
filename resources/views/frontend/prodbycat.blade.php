@@ -15,7 +15,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-12 mb-5 mt-5">
                         <div class="row " height='250px' >
-                            <h2>{{ $category->name}}</h2>
+                            <h2 class="fs-2 w-responsive font-weight-bold text-center  mb-2 mt-3">{{ $category->name}}</h2>
                             <hr>
                             @foreach($products as $item) 
                                     <div class="col-md-3 mb-2 mt-5">

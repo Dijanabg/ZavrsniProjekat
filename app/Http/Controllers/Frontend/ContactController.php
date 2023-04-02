@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $stores = Store::all();
-        return view('frontend.contact',['stores'=>$stores]);
+        return view('frontend.contact',['stores'=> $stores]);
     }
     
 }
