@@ -48,15 +48,7 @@
                                         @endif
                                     </form>
                                 </div>
-                                <div class="col-md-6">
-                                    <form action="" method="">
-                                        <input type="hidden" name="product_id" value="{{ ucfirst($products->id) }}">
-                                        <button class="btn btn-primary px-4 addToWishList">
-                                            <i class="fa fa-heart me-2"></i>
-                                            Lista želja
-                                        </button>
-                                    </form>
-                                </div>
+                                
                             </div>
                             
                         </div>
