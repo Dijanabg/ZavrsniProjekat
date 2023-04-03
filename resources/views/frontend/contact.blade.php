@@ -9,8 +9,9 @@
 
 <div class="row px-5 mt-5 mb-5">
     <div class="col-md-6 mb-md-0 mb-5 mt-5">
-        <form id="contact-form" name="contact-form" action="../code/mail.php" method="POST">
-            <div class="row">
+        <form id="contact-form" name="contact-form" action="{{ route('contact.submit') }}" method="POST">
+        @csrf    
+        <div class="row">
                 <div class="col-md-2 mt-5"></div>
                 <div class="col-md-5">
                     <div class="md-form mb-0">
@@ -45,7 +46,9 @@
             </div>
         </form>
         <div class="text-center text-md-left">
-            <a class="btn btn-primary" onclick="validateForm();">Pošalji</a>
+            <button type="submit">
+                <a class="btn btn-primary" >Pošalji</a>
+            </button>
         </div>
         <div class="status"></div>
     </div>
