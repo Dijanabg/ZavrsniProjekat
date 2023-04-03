@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class OrderAdminController extends Controller
 {
@@ -24,6 +25,7 @@ class OrderAdminController extends Controller
         $orders = Order::findOrFail($id);
         $orders->status = $request->input('status')==true? '1':'0';
         $orders->update();
+        Alert::success('Porudžbina je ažurirana','');
         return redirect('/admin/order')->with('status', "Porudžbina je ažurirana");
     }
 }

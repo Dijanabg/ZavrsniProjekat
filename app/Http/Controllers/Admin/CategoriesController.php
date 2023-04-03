@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoriesController extends Controller
 {
@@ -34,7 +35,8 @@ class CategoriesController extends Controller
         }
         $category->status = $request->input("status")==true? '1':'0';
         $category->save();
-       return redirect('/admin/categories')->with('status', "Category add sucessfully");
+        Alert::success('Kategorija je uspešno dodata','');
+       return redirect('/admin/categories');
     }
     public function show( $id)
     {
@@ -63,12 +65,14 @@ class CategoriesController extends Controller
         }
         $category->status = $request->input("status")==true? '1':'0';
         $category->update();
-       return redirect('/admin/categories')->with('status', "Category updated sucessfully");
+        Alert::success('Kategorija je uspešno ažurirana','');
+       return redirect('/admin/categories');
     }
     public function destroy($id)
     {
         $cat = Category::find($id);
         $cat->delete();
+        Alert::success('Kategorija je izbrisana','');
         return redirect('admin/categories');
     }
 }

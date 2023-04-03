@@ -106,6 +106,7 @@
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
             <div>@include('layouts.inc.adminnavbar')</div>
             <div>
+            @include('sweetalert::alert')
                 @yield('content')
             </div>
         </main>

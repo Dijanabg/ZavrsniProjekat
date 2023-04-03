@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
@@ -97,6 +98,7 @@ class ProductController extends Controller
                     $cart->product_id = $product_id;
                     $cart->user_id = Auth::id();
                     $cart->save();
+                    Alert::success('Proizvod je ubacen u korpu','');
                     return redirect('cart');
                 }
         } else return redirect('/login');
@@ -106,7 +108,8 @@ class ProductController extends Controller
     {
         $prod = Product::findOrFail($id);
         $prod ->delete();
-        return redirect('product');
+        Alert::success('Proizvod je izbrisan','');
+        return redirect('/admin/product');
     }
 }
 // $product_id = $request->input('product_id');

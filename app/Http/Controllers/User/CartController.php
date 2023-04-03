@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class CartController extends Controller
@@ -38,6 +39,7 @@ class CartController extends Controller
                 if (Cart::where('product_id', $product_id)->where('user_id', Auth::id())->exists()) {
                     $cartItem = Cart::where('product_id', $product_id)->where('user_id', Auth::id())->first();
                     $cartItem->delete();
+                    Alert::success('Proizvod je izbrisan iz korpe','');
                     return redirect()->back();
                 } else {
                     return redirect('cart');

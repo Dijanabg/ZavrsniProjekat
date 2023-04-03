@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CheckoutController extends Controller
 {
@@ -61,6 +62,7 @@ class CheckoutController extends Controller
         // }
         $cart = Cart::where('user_id',Auth::id())->get();
         Cart::destroy($cart);
+        Alert::success('Porudžbina je prihvaćena','');
         return redirect('/')->with('status', 'Porudžina je prihvaćena');
     }
 }

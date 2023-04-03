@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ContactRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ContactController extends Controller
 {
@@ -19,7 +20,7 @@ class ContactController extends Controller
     public function submit(ContactRequest $request)
     {
         Mail::to('di.webkom@gmail.com')->send(new ContactMail($request->name, $request->email, $request->subject, $request->message));
-
+        Alert::success('Email je uspešno poslat','Potrudićemo se da odgovorimo u najkraćem mogućem roku');
         return to_route('frontend.contact');
     }
     

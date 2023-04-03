@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Store;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class StoreController extends Controller
 {
@@ -27,7 +28,8 @@ class StoreController extends Controller
         $store->work_time = $request->input("work_time");
         
         $store->save();
-       return redirect('/admin/store')->with('status', "Store add sucessfully");
+        Alert::success('Prodavnica je dodata uspešno','');
+       return redirect('/admin/store');
     }
     public function show( $id)
     {
@@ -46,12 +48,14 @@ class StoreController extends Controller
         $store->phone = $request->input("phone");
         $store->work_time = $request->input("work_time");
         $store->update();
-       return redirect('/admin/store')->with('status', "Store updated sucessfully");
+        Alert::success('Podaci su uspešno ažurirani','');
+       return redirect('/admin/store');
     }
     public function destroy($id)
     {
         $store = store::find($id);
         $store->delete();
+        Alert::success('Prodavnica je izbrisana uspešno','');
         return redirect('/admin/store');
     }
 }

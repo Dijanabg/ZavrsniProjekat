@@ -29,5 +29,5 @@
             <div>
                 @yield('content')
             </div> 
-        
+            @include('sweetalert::alert')
         @include('layouts.inc.frontfooter')

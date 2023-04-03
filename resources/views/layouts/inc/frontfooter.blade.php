@@ -5,10 +5,10 @@
             <div class="col-md-3">
                 <h4 class="text-white">E-shop</h4>
                 <div class="underline mb-2"></div><br>
-                <a href="home.php" class="text-white"><i class="fa fa-angle-right">Home</i></a><br>
-                <a href="contact.php" class="text-white"><i class="fa fa-angle-right">Kontakt</i></a><br>
-                <a href="category.php" class="text-white"><i class="fa fa-angle-right">Kategorije</i></a><br>
-                <a href="cart.php" class="text-white"><i class="fa fa-angle-right">Korpa</i></a>
+                <a href="{{ url('/') }}" class="text-white"><i class="fa fa-angle-right">Home</i></a><br>
+                <a href="{{ url('/contact') }}" class="text-white"><i class="fa fa-angle-right">Kontakt</i></a><br>
+                <a href="{{ url('/categories') }}" class="text-white"><i class="fa fa-angle-right">Kategorije</i></a><br>
+                <a href="{{ url('/cart') }}" class="text-white"><i class="fa fa-angle-right">Korpa</i></a>
             </div>
             <div class="col-md-3">
                 <h4 class="text-white">Address</h4>
@@ -36,20 +36,8 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
         <script src="{{ asset('js/owl.carousel.min.js') }}" defer></script>
-<!-- Alertify JS za iskacuce poruke -->
-<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-<script>
-    
-    alertify.set('notifier', 'position', 'top-center');
-    <?php if (isset($_SESSION['message'])) {
-    ?>
-       
-        alertify.success("<?= $_SESSION['message'] ?>");
-    <?php
-        unset($_SESSION['message']);
-    }
-    ?>
-    </script>
+
+
     @yield('scripts')
 </footer>
 </body>
