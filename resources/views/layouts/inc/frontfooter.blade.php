@@ -28,7 +28,7 @@
 </div>
 <div class="py-2 bg-dark">
     <div class="text-center">
-        <p class="mb-0 text-white">All rights reserved. Copyright @ <a href="#" target="_blank" class="text-danger">Dijana</a> <?= date('Y') ?></p>
+        <p class="mb-0 fs-3 text-white">All rights reserved. Copyright @ <a href="https://github.com/Dijanabg?tab=repositories" target="_blank" class="text-danger">Dijana</a> <?= date('Y') ?></p>
     </div>
 </div>
     
