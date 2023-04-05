@@ -65,7 +65,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                <button type="submit" class="btn bg-gradient-primary" name="">Sačuvaj</button>
+                                <button type="submit"><a class="btn bg-gradient-primary" name="">Sačuvaj</a></button>
                             </div>
                         </div>
                     </form>

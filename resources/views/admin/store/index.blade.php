@@ -31,7 +31,7 @@
                                             <form action="{{ url('/admin/store'.'/'. $item->id) }}" method="POST">
                                             @csrf
                                 @method('DELETE')
-                                                <button type="submit" class="btn bg-gradient-primary" name="">Obriši</button>
+                                                <button type="submit" ><a class="btn bg-gradient-primary" name="">Obriši</a></button>
                                             </form>
                                         </td>
                                     </tr>

@@ -29,14 +29,14 @@ class CartApiController extends Controller
         $product_id = $request->input('product_id');
         if (Auth::check()) {
                 if (Cart::where('product_id', $product_id)->where('user_id', Auth::id())->exists()) {
-                    return response()->json(['status',' Already Added to Cart']);
+                    return response()->json([' Already Added to Cart']);
                     
                 } else {
                     $cart = new Cart();
                     $cart->product_id = $product_id;
                     $cart->user_id = Auth::id();
                     $cart->save();
-                    return response()->json(['status',' Added to Cart']);
+                    return response()->json([' Added to Cart']);
                 }
         } else {return response()->json(['status' ,' You must login']);
     }   

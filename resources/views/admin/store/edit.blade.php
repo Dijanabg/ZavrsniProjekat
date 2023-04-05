@@ -35,7 +35,7 @@
  
                                     
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn bg-gradient-primary" name="">Ažuriraj</button>
+                                        <button type="submit" ><a class="btn bg-gradient-primary" name="">Ažuriraj</a></button>
                                     </div>
                                 </div>
                             </form>

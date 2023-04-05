@@ -65,7 +65,9 @@ class OrderApiController extends Controller
 
     public function show(Order $order)
     {
-        return new OrderWithItemsResource($order);
+        return response()->json([
+             new OrderWithItemsResource($order)
+        ]);
     }
 
     public function update(Request $request, Order $order)

@@ -81,6 +81,7 @@ class CategoryApiController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return response()->json('Post je uspesno obrisan.');
+        return response()->json(['Kategorija je uspesno obrisana.']);
     }
 }
+ 

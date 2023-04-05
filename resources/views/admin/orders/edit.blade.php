@@ -102,7 +102,7 @@
                                                 <option value="0" {{ $orders->status == '0'? 'selected':'' }} >Slanje</option>
                                                 <option value="1" {{ $orders->status == '1'? 'selected':'' }} >Završeno</option>
                                             </select>
-                                            <button type="submit" class="btn">Ažuriraj</button>
+                                            <button type="submit" ><a class="btn bg-gradient-primary">Ažuriraj</a></button>
                                         </form>
                                     </div>
                                 </div>

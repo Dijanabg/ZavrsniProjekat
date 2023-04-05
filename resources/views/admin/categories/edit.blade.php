@@ -38,7 +38,7 @@
                                 <input type="checkbox" name="status" {{ $categories->status == "1" ? 'checked': ' '}}>
                             </div>
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn bg-gradient-primary" >Ažuriraj</button>
+                                        <button type="submit"><a class="btn bg-gradient-primary" >Ažuriraj</a></button>
                                     </div>
                                 </div>
                             </form>

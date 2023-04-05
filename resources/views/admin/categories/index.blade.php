@@ -31,7 +31,7 @@
                                             <form action="{{ url('/admin/categories'.'/'. $item->id) }}" method="POST">
                                             @csrf
                                 @method('DELETE')
-                                                <button type="submit" class="btn bg-gradient-primary" name="">Obriši</button>
+                                                <a class="btn bg-gradient-primary" name="">Obriši</a>
                                             </form>
                                         </td>
                                     </tr>

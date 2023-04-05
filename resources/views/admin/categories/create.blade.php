@@ -28,7 +28,7 @@
                                 <input type="checkbox" name="status" >
                             </div>
                             <div class="col-md-12">
-                                <button type="submit" class="btn bg-gradient-primary" id="btn-submit">Save</button>
+                                <button type="submit" ><a class="btn bg-gradient-primary" id="btn-submit">Save</a></button>
                             </div>
                         </div>
                     </form>
