@@ -14,5 +14,5 @@ class Store extends Model
         'adress',
         'phone',
         'work_time'
-    ];
+    ]; 
 }

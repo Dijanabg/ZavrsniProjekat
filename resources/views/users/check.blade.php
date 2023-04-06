@@ -9,14 +9,14 @@
     </div>
 </div>
 
-<div class="py-5">
+<div class="py-3">
     <div class="container">
-        <div class="card">
-            <div class="card card-body shadow mt-3">
+        <div class="card  mt-3 mb-3">
+            <div class="card card-body shadow mt-3 mb-3" >
                 <form action="{{ url('/check') }}" method="POST">
                     @csrf
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-7" height="500px">
                             <h5>Osnovni podaci</h5>
                             <hr>
                            
@@ -41,9 +41,9 @@
                                     <label class="fw-bold">Pin Code</label>
                                     <input type="text" name="pincode" required placeholder="Unesi pin code" class="form-control">
                                 </div>
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-3 mt-5">
                                     <label class="fw-bold">Adresa</label>
-                                    <textarea name="adress" class="form-control " rows="5" required></textarea>
+                                    <textarea name="adress" class="form-control " rows="10" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                             <h5>Ukupna cena : <span class="float-end fw-bold">{{ $totalPrice}}</span></h5>
                             <div>
                                 <input type="hidden" name="payMode" value="pp">
-                                <button type="submit" name="placeOrderBtn" class="btn btn-primary w-100">Potvrdi porudžbinu</button>
+                                <button type="submit" name="placeOrderBtn" ><a class="btn btn-primary w-100">Potvrdi porudžbinu</a></button>
                             </div>
                         </div>
                     </div>
@@ -84,5 +84,5 @@
         </div>
     </div>
 </div>
-</div>
+
 @endsection

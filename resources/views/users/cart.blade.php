@@ -49,8 +49,8 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <input type="hidden" name="product_id" value="{{ ucfirst($citem->products->id) }}">
-                                                <button type="submit" class="btn btn-danger btn-sm" value="">
-                                                    <i class="fa fa-trash me-2"></i>Ukloni
+                                                <button type="submit" ><a class="btn btn-danger btn-sm" value="">
+                                                    <i class="fa fa-trash me-2"></i>Ukloni</a>
                                                 </button>
                                                 </form>
                                             </div>

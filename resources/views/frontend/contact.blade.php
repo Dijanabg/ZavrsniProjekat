@@ -44,12 +44,13 @@
                     </div>
                 </div>
             </div>
-        </form>
+       
         <div class="text-center text-md-left">
             <button type="submit">
                 <a class="btn btn-primary" >Pošalji</a>
             </button>
         </div>
+        </form>
         <div class="status"></div>
     </div>
     <div class="col-md-1 mt-5"></div>

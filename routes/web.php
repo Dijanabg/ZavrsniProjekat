@@ -44,9 +44,9 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.s
 Route::post('/product/{id}', [ProductController::class, 'addToCart'])->name('product.tocart');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
-// Route::get('/email', function () {
-//     Mail::to('di.webkom@gmail.com')->send(new TestMail());
-//     });
+Route::get('/email', function () {
+    Mail::to('dijanabgjovanovic@gmail.com')->send(new TestMail());
+    });
 
 
 
