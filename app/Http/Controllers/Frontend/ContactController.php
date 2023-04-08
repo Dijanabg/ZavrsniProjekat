@@ -21,7 +21,8 @@ class ContactController extends Controller
     {
         Mail::to('di.webkom@gmail.com')->send(new ContactMail($request->name, $request->email, $request->subject, $request->message));
         Alert::success('Email je uspešno poslat','Potrudićemo se da odgovorimo u najkraćem mogućem roku');
-        return to_route('contact');
+        return to_route('contact.index');
+        //return response()->json($request);
     }
     
 }
