@@ -37,8 +37,7 @@
                    {{ __('Log Out') }}
                 </a>
               </form>
-            </li>
-            <li><a class="dropdown-item fs-3" href="">Lista želja</a></li>
+            
           </ul>
         </li>
         @else

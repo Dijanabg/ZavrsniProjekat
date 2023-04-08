@@ -35,8 +35,8 @@
                                 @foreach($carts as $citem)
                                     <div class="card product_data shadow-sm mb-3">
                                         <div class="row align-items-center">
-                                            <div class="col-md-2 text-center">
-                                                <img src="" alt="Image" class="w-50">
+                                            <div class="col-md-2 text-center"> 
+                                                <img src="{{ asset('/storage/product/'.$citem->products->image) }}" alt="Image" class="w-50">
                                             </div>
                                             <div class="col-md-4 text-center">
                                                 <h5>{{ ucfirst($citem->products->name) }}</h5>

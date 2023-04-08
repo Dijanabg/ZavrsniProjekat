@@ -1,5 +1,6 @@
 @extends('layouts.inc.front')
 @section('content')
+<div>
 <div class="py-3 bg-secondary">
     <div class="container">
         <h6 class="text-white fs-4">
@@ -12,7 +13,7 @@
 <div class="py-3">
     <div class="container">
         <div class="card  mt-3 mb-3">
-            <div class="card card-body shadow mt-3 mb-3" >
+            <div class="card-body shadow mt-3 mb-3" >
                 <form action="{{ url('/check') }}" method="POST">
                     @csrf
                     <div class="row">
@@ -41,9 +42,9 @@
                                     <label class="fw-bold">Pin Code</label>
                                     <input type="text" name="pincode" required placeholder="Unesi pin code" class="form-control">
                                 </div>
-                                <div class="col-md-12 mb-3 mt-5">
+                                <div class="col-md-6 mb-3">
                                     <label class="fw-bold">Adresa</label>
-                                    <textarea name="adress" class="form-control " rows="10" required></textarea>
+                                    <textarea name="adress" class="form-control " rows="10" placeholder="Unesi adresu" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +57,7 @@
                                     <div class="row align-items-center">
                                     <input type="hidden" name="product_id" value="{{ $citem->products->id }}">
                                         <div class="col-md-2">
-                                            <img src="../uploads/" alt="" width="60px">
+                                            <img src="{{ asset('/storage/product/'.$citem->products->image) }}" alt="" width="60px">
                                         </div>
                                         <div class="col-md-5">
                                             <label>{{ ucfirst($citem->products->name) }}</label>
@@ -65,18 +66,12 @@
                                         <div class="col-md-3">
                                             <label>{{ ucfirst($citem->products->sell_price) }}</label>
                                         </div>
-                                        
+                                        <div class="col-md-12 mb-3 mt-5"></div>
 
                                     </div>
                                 </div>
                                 @php $totalPrice += $citem -> products ->sell_price @endphp
                             @endforeach
-                            <input type="hidden" name="totalPrice" value="{{ $totalPrice}}">
-                            <h5>Ukupna cena : <span class="float-end fw-bold">{{ $totalPrice}}</span></h5>
-                            <div>
-                                <input type="hidden" name="payMode" value="pp">
-                                <button type="submit" name="placeOrderBtn" ><a class="btn btn-primary w-100">Potvrdi porudžbinu</a></button>
-                            </div>
                         </div>
                     </div>
                 </form>
@@ -84,5 +79,5 @@
         </div>
     </div>
 </div>
-
+</div>
 @endsection
