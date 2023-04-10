@@ -72,6 +72,11 @@
                                 </div>
                                 @php $totalPrice += $citem -> products ->sell_price @endphp
                             @endforeach
+                            
+                            <div>
+                                <input type="hidden" name="payMode" value="pp">
+                                <button type="submit" name="placeOrderBtn" ><a class="btn btn-primary w-100">Potvrdi porudžbinu</a></button>
+                            </div>
                         </div>
                     </div>
                 </form>

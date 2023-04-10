@@ -82,5 +82,5 @@ class OrderApiController extends Controller
         $order->save();
         return response()->json(['Porudzbina je azurirana uspesno.', new OrderResource($order)]);
     }
-}
+} 
 
